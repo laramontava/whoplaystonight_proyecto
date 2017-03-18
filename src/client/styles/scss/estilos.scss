@@ -1,0 +1,116 @@
+//~/whoplaystonight_MEAN/src/client/styles$ sass --watch scss/estilos.scss:css/estilos_sass.css
+@import "variables";
+
+.center{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textRegular{
+  font-family:"Open Sans", Arial,$textFont;
+  font-size:14px;
+}
+
+header{
+    background-color: $backgroundcolor_black;
+    color: $text_white;
+}
+
+#isotipo{
+  height: 150px;
+  background: url(../../images/Favicon_2.svg) no-repeat;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.logo{
+    float:left;
+}
+.logo span {
+    color: #17C2A4;
+}
+.logo h1 a {
+    font-family: $headerFont;
+    font-size:2em;
+    color: #fff;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight:600;
+    margin-left: 20px;
+    letter-spacing: 2px;
+    @include bp-small{
+      font-size:1.5em;
+    };
+    @include bp-medium{
+      font-size:2em;
+    };
+}
+
+#myTopnav{
+  background-color:$backgroundcolor_black;
+  padding:none;
+}
+
+.w3ls_banner_info{
+
+  background:url(../../images/backgroundBanner.svg) no-repeat;
+  background-size:cover;
+
+  h3{
+    span{
+      font-family: $headerFont;
+      font-size:1.5em;
+    }//span
+  }//h3
+  h4{
+    color:$text_white;
+    font-size:2em;
+  }//h4
+}//w3ls_banner_info
+
+.footer-w3l {
+      @extend header;
+}
+
+.social-icon{
+  margin-top: 1.8em;
+  a{
+    margin-left: 0px;
+    margin-right: 20px;
+    padding-right: 0px;
+    padding-left: 0px;
+    img{
+      border-radius: 50%;
+    }
+  }//a
+  @include bp-small{
+    ul li{
+      display:block!important;
+    }
+  }
+  @include bp-medium{
+    ul li{
+      display:inline!important;
+    }
+  }
+  @include bp-large{
+    ul li{
+      display:inline!important;
+    }
+  }
+}//social-icon
+
+#userForm{
+  @extend .textRegular;
+  width:10px;
+  padding: 0 5px;
+  margin: 0 auto;
+}
+
+input{
+  width:98%;
+  height: 40px;
+  font:300 24px "Open Sans", Arial, sans-serif;
+}

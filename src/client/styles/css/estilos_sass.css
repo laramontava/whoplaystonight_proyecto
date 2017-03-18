@@ -1,0 +1,86 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.textRegular, #userForm {
+  font-family: "Open Sans", Arial, monospace;
+  font-size: 14px; }
+
+header, .footer-w3l {
+  background-color: #000000;
+  color: #ffffff; }
+
+#isotipo {
+  height: 150px;
+  background: url(../../images/Favicon_2.svg) no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.logo {
+  float: left; }
+
+.logo span {
+  color: #17C2A4; }
+
+.logo h1 a {
+  font-family: Impact;
+  font-size: 2em;
+  color: #fff;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 600;
+  margin-left: 20px;
+  letter-spacing: 2px; }
+  @media only screen and (min-width: 500px) {
+    .logo h1 a {
+      font-size: 1.5em; } }
+  @media only screen and (min-width: 850px) {
+    .logo h1 a {
+      font-size: 2em; } }
+
+#myTopnav {
+  background-color: #000000;
+  padding: none; }
+
+.w3ls_banner_info {
+  background: url(../../images/backgroundBanner.svg) no-repeat;
+  background-size: cover; }
+  .w3ls_banner_info h3 span {
+    font-family: Impact;
+    font-size: 1.5em; }
+  .w3ls_banner_info h4 {
+    color: #ffffff;
+    font-size: 2em; }
+
+.social-icon {
+  margin-top: 1.8em; }
+  .social-icon a {
+    margin-left: 0px;
+    margin-right: 20px;
+    padding-right: 0px;
+    padding-left: 0px; }
+    .social-icon a img {
+      border-radius: 50%; }
+  @media only screen and (min-width: 500px) {
+    .social-icon ul li {
+      display: block !important; } }
+  @media only screen and (min-width: 850px) {
+    .social-icon ul li {
+      display: inline !important; } }
+  @media only screen and (min-width: 960px) {
+    .social-icon ul li {
+      display: inline !important; } }
+
+#userForm {
+  width: 10px;
+  padding: 0 5px;
+  margin: 0 auto; }
+
+input {
+  width: 98%;
+  height: 40px;
+  font: 300 24px "Open Sans", Arial, sans-serif; }
+
+/*# sourceMappingURL=estilos_sass.css.map */

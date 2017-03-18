@@ -1,0 +1,44 @@
+<section id="modalContainer">
+  <header class="modal-header">
+    <h1>Event Details</h1>
+  </header>
+  <main id="modal-body">
+      <table class="table table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>Band Name</th>
+          <th>Event Description</th>
+          <th>Type Event</th>
+          <th>Number of artist</th>
+          <th>Date Event</th>
+          <th>Access</th>
+          <th>Date Ticket</th>
+          <th>Openning Time</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Poster</th>
+          <th>Town</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{vm.event.band_name}}</td>
+          <td>{{vm.event.description}}</td>
+          <td>{{vm.event.type_event}}</td>
+          <td>{{vm.event.n_participants}}</td>
+          <td>{{vm.event.date_event}}</td>
+          <td>{{vm.event.type_access}}</td>
+          <td>{{vm.event.date_ticket}}</td>
+          <td>{{vm.event.openning}}</td>
+          <td>{{vm.event.start}}</td>
+          <td>{{vm.event.end}}</td>
+          <td>{{vm.event.poster}}</td>
+          <td>{{vm.event.town}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <footer class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$close()">Close</button>
+  </footer>
+</section>
