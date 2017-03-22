@@ -23,7 +23,7 @@
             title:'Main',
             settings: {
               nav:1,
-              content:'<img src="../images/Home.svg" alt="home"/>'
+              content:'Home'
             }//end_settings
           }//end_config
         }

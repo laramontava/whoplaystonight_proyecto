@@ -15,7 +15,7 @@
     vm.logout = logout;
     vm.setLang = setLang;
     activate();
-
+    
     function activate() {
       getNavRoutes();
 

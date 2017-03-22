@@ -1,9 +1,10 @@
-$backgroundcolor_black:#000000;
-$backgroundcolor_red:#c30007;
+$backgroundcolor_grey:#2E2E2E;
 $backgroundcolor_blue:#1665ac;
 $text_white:#ffffff;
-$headerFont:Impact;
-$textFont:monospace;
+$red_color: #D24D57;
+$headerFont:'Righteous', cursive;
+$textFont:'Ubuntu', sans-serif;
+$titleFont: 'Cabin', sans-serif;
 
 
 @mixin bp-small {

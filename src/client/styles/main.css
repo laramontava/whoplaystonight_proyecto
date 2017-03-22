@@ -147,10 +147,6 @@ a {
   transition:  color 300ms, background-color 300ms;
 }
 
-a:hover, a:focus {
-  color: #d43133;
-}
-
 hr {
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #fff;
@@ -186,7 +182,6 @@ hr {
 
 a:hover,
 a:focus {
-  color: #111;
   text-decoration: none;
   outline: none;
 }

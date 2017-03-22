@@ -23,7 +23,7 @@
             title:'Contact',
             settings: {
               nav:4,
-              content:'<img src="../images/Contact.svg" alt="home"/>'
+              content:'Contact'
             }
           }
         }];
