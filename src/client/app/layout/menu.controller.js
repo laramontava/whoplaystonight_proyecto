@@ -14,14 +14,16 @@
     vm.isCurrent = isCurrent;
     vm.logout = logout;
     vm.setLang = setLang;
+    vm.responsivenavbar = responsivenavbar;
+    vm.closemenu = closemenu;
     activate();
-    
+
     function activate() {
       getNavRoutes();
 
       var promises = [getAuthUser()];
-      return $q.all(promises).then(function(){
-          logger.info('Activated layout view');
+      return $q.all(promises).then(function () {
+        logger.info('Activated layout view');
       });
     }
 
@@ -61,6 +63,24 @@
       // You can change the language during runtime
       $translate.use(langKey);
     };
+    function responsivenavbar() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+      $(document).ready(function($) {
+              $('.links').click(function() {
+                $("#myTopnav").removeClass("responsive");
+              });
+          });
+    };
+    function closemenu() {
+        $('.links').click(function () {
+          $("#myTopnav").removeClass("responsive");
+        });
+    }
   }
 
 })();

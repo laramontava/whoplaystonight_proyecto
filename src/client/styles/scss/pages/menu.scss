@@ -1,4 +1,9 @@
-ul.topnav li.icon {
+nav.navbar.navbar-inverse {
+    background: #2E2E2E;
+    border-radius: 0;
+    border: none;
+}
+/*ul.topnav li.icon {
     display: none;
 }
 header {
@@ -7,7 +12,8 @@ header {
 }
 
 header nav {
-    width:100%;
+    width:70%;
+    margin-top: 12px;
     background:#2E2E2E;
     padding-bottom: 20px;
     float: right;
@@ -15,7 +21,7 @@ header nav {
 .container a {
     color: #FFF;
     text-decoration: none;
-    font: 20px 'Montserrat', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     margin: 0px 10px;
     padding: 10px 10px;
     position: relative;
@@ -23,7 +29,7 @@ header nav {
     cursor: pointer;
 }
 .container {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     margin: 0 auto;
 }
 .menu_bar {
@@ -41,6 +47,7 @@ header nav ul li {
 
 header nav ul li a {
     color:#fff;
+    font-family: 'Ubuntu', sans-serif;
     padding:20px;
     display:block;
     text-decoration:none;
@@ -76,7 +83,10 @@ header nav ul li span {
 }
 
 @media screen and (max-width:800px) {
-    ul.topnav li/*:not(:first-child)*/ {display: none;}
+    header nav {
+        width:100%;
+    }
+    ul.topnav li {display: none;}
     ul.topnav li.icon {
         float: right;
         display: inline-block;
@@ -102,4 +112,4 @@ header nav ul li span {
         display: block;
         text-align: left;
     }
-}
+}*/

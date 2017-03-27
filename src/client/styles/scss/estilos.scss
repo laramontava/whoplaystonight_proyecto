@@ -1,9 +1,10 @@
-//~/whoplaystonight_MEAN/src/client/styles$ sass --watch scss/estilos.scss:css/estilos_sass.css
+//~/whoplaystonight_proyecto/src/client/styles$ sass --watch scss/estilos.scss:css/estilos_sass.css
 @import "normalize.css";
 @import "variables";
 /* ------------------------------------  Común */
 body {
   font-family: $textFont;
+  font-size: 1.5em;
 }
 h1,h2,h3,h4 {
   font-family: $titleFont;
@@ -63,76 +64,11 @@ header{
     }
 }
 /* -----------------------  Menú */
-@import "menu";
-
+@import "pages/menu";
 /* ------------------------------------  Body */
-.video-background{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    transform: translateX(-50%) translateY(-50%);
-    background-size: cover;
-    transition: 1s opacity;
-}
-.video-controls {
-  display: none;
-}
-
-.welcome {
-  background-color: $backgroundcolor_grey;
-  color: $text_white;
-  div {
-    padding: 40px;
-  }
-  h2 {
-    margin: 0;
-    font-size: 2.2em;
-    span{
-      color:$red_color;
-      font-size: 1.5em;
-    }
-  }
-  div > h2, h4 {
-    color: $text_white;
-  }
-}
-.search{
-  padding: 90px;
-  div {
-    background-color: rgba(46, 46, 46, 0.76);
-    width: 700px;
-    margin: 0 auto;
-    padding: 30px;
-  }
-  div h4 {
-    color: $text_white;
-    margin-bottom: 10px;
-  }
-  #input-search {
-    border-radius: 0;
-    border: 3px $red_color solid;
-    background-color: $backgroundcolor_grey;
-    color: $text_white;
-    width: 500px;
-    margin: 10px;
-    margin: 0 auto;
-    
-  }
-  .btn_main {
-    width: 176px;
-    border: none;
-    background: $text_white;
-    margin-left: 70px;
-    margin-top: 10px;
-  }
-}
+@import "pages/main";
 /*------------- Locate */
-@import "locate";
+@import "pages/locate";
 /* ------------------------------------  Footer */
 .footer-w3l {
       @extend header;
