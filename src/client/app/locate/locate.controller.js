@@ -7,12 +7,13 @@
   .controller('ModalInstanceCtrl',ModalInstanceCtrl);
 
   /*To inject controller dependencies*/
-  LocateController.$inject=['$q','dataservice','logger','$uibModal','$scope'];
+  LocateController.$inject=['$q','dataservice','logger','$uibModal','$scope', '$translatePartialLoader'];
 
   /*State LocateController*/
-  function LocateController($q,dataservice,logger,$uibModal,$scope){
+  function LocateController($q,dataservice,logger,$uibModal,$scope, $translatePartialLoader){
 
     var vm=this;
+    $translatePartialLoader.addPart('locate');
     vm.title='Locate';
 
     /*Map centered on spain*/

@@ -1,5 +1,4 @@
 //~/whoplaystonight_proyecto/src/client/styles$ sass --watch scss/estilos.scss:css/estilos_sass.css
-@import "normalize.css";
 @import "variables";
 /* ------------------------------------  Común */
 body {
@@ -69,6 +68,7 @@ header{
 @import "pages/main";
 /*------------- Locate */
 @import "pages/locate";
+@import "pages/contact";
 /* ------------------------------------  Footer */
 .footer-w3l {
       @extend header;

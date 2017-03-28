@@ -1,0 +1,11 @@
+{
+    "EVENTS_TITLE": "Eventos",
+    "EVENTS_DESCRIPTION": "Aquí puede ver la localización de los eventos.",
+    "SEARCH_TEXT": "Introduce el nombre de la ciudad donde quieras encontrar conciertos",
+    "MAP_TEXT": "Mapa",
+
+    "TOWN_TH": "Ciudad",
+    "BANDNAME_TH": "Nombre de Banda",
+    "DATEEVENT_TH": "Fecha de Evento",
+    "STARTTIME_TH": "Hora de Inicio"
+}
