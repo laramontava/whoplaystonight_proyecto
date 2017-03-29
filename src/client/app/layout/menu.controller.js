@@ -15,7 +15,6 @@
     vm.logout = logout;
     vm.setLang = setLang;
     vm.responsivenavbar = responsivenavbar;
-    vm.closemenu = closemenu;
     activate();
 
     function activate() {
@@ -64,23 +63,12 @@
       $translate.use(langKey);
     };
     function responsivenavbar() {
-      var x = document.getElementById("myTopnav");
-      if (x.className === "topnav") {
-        x.className += " responsive";
-      } else {
-        x.className = "topnav";
-      }
-      $(document).ready(function($) {
-              $('.links').click(function() {
-                $("#myTopnav").removeClass("responsive");
-              });
-          });
+      var navMain = $(".navbar-collapse");
+      navMain.on("click", "a:not([data-toggle])", null, function () {
+        navMain.collapse('hide');
+      });
     };
-    function closemenu() {
-        $('.links').click(function () {
-          $("#myTopnav").removeClass("responsive");
-        });
-    }
+
   }
 
 })();

@@ -13,102 +13,18 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li role="menuitem" class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
+            <li role="menuitem" class="nlightblue fade-selection-animation" ng-click="vm.responsivenavbar()" ng-class="vm.isCurrent(r)"
+              ng-repeat="r in vm.navRoutes">
               <a role="button" class="links" ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
-            </li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Lang<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li> <a ng-click="vm.setLang('en')" translate="ENGLISH">{{'ENGLISH' | translate}}</a></li>
-                <li> <a ng-click="vm.setLang('es')" translate="ESPAÑOL">{{'ESPAÑOL' | translate}}</a></li>
-              </ul>
-            </li>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Lang<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li> <a ng-click="vm.setLang('en')" translate="ENGLISH">{{'ENGLISH' | translate}}</a></li>
+                  <li> <a ng-click="vm.setLang('es')" translate="ESPAÑOL">{{'ESPAÑOL' | translate}}</a></li>
+                </ul>
+              </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li role="menuitem" ng-hide="$root.authUser">
-            <a role="button" target="_self" href="api/loginFacebook"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
-          </li>
-          <li role="menuitem" ng-hide="$root.authUser">
-            <a role="button" target="_self" href="api/loginTwitter"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-          </li>
-          <li role="menuitem" ng-hide="$root.authUser">
-            <a role="button" target="_self" href="/signin" ng-show="!$root.authUser">Sign In</a>
-          </li>
-          <li role="menuitem" ng-hide="$root.authUser">
-            <a role="button" target="_self" href="/signup" ng-show="!$root.authUser">Sign Up</a>
-          </li>
-          <li role="menuitem" id="userAuthInfo" ng-show="$root.authUser" class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="/admin"><img class="avatar" ng-src="{{$root.authUser.avatar}}" />{{'WELCOME' | translate}} {{ $root.authUser.username}}{{
-                $root.authUser.name.givenName}}<span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li role="menuitem" id="logoutButton" ng-click="vm.logout()" ng-show="$root.authUser">
-                  <a role="button" href="#">Log Out</a>
-                </li>
-              </ul>
-          </li>
-          <li role="menuitem" id="userAuthInfo" ng-show="$root.authUser">
-            
-          </li>
-          
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!--<nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Who Plays Tonight?</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li role="menuitem" class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
-            <a role="button" class="links" ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
-          </li>
-          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Lang<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li> <a ng-click="vm.setLang('en')" translate="ENGLISH">{{'ENGLISH' | translate}}</a></li>
-              <li> <a ng-click="vm.setLang('es')" translate="ESPAÑOL">{{'ESPAÑOL' | translate}}</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li role="menuitem" ng-hide="$root.authUser">
-            <a role="button" target="_self" href="api/loginFacebook"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
-          </li>
-          <li role="menuitem" ng-hide="$root.authUser">
-            <a role="button" target="_self" href="api/loginTwitter"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-          </li>
-          <li role="menuitem" ng-hide="$root.authUser">
-            <a role="button" target="_self" href="/signin" ng-show="!$root.authUser">Sign In</a>
-          </li>
-          <li role="menuitem" ng-hide="$root.authUser">
-            <a role="button" target="_self" href="/signup" ng-show="!$root.authUser">Sign Up</a>
-          </li>
-          <li role="menuitem" id="userAuthInfo" ng-show="$root.authUser">
-            <a role="button" href="/admin"><img class="avatar" ng-src="{{$root.authUser.avatar}}" />{{'WELCOME' | translate}} {{ $root.authUser.username}}{{
-              $root.authUser.name.givenName}}
-            </a>
-          </li>
-          <li role="menuitem" id="logoutButton" ng-click="vm.logout()" ng-show="$root.authUser">
-            <a role="button" href="#">Log Out</a>
-          </li>
-        </ul>
-      </div>
-    </nav>-->
-    <!--<section class="container">
-      <h2><a class=" logo links" href="/">Who Plays Tonight?</a></h2>
-      <nav>
-        <ul class="topnav" id="myTopnav">
-          <li role="menuitem" class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
-            <a role="button" class="links" ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
-          </li>
-          <li> <a>Lang</a>
-            <ul class="dropdown dropdown-big">
-              <li> <a ng-click="vm.setLang('en')" translate="ENGLISH">{{'ENGLISH' | translate}}</a></li>
-              <li> <a ng-click="vm.setLang('es')" translate="ESPAÑOL">{{'ESPAÑOL' | translate}}</a></li>
-            </ul>
-          </li>
-          <div class="social-menu fRight">
             <li role="menuitem" ng-hide="$root.authUser">
               <a role="button" target="_self" href="api/loginFacebook"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
             </li>
@@ -129,10 +45,13 @@
             <li role="menuitem" id="logoutButton" ng-click="vm.logout()" ng-show="$root.authUser">
               <a role="button" href="#">Log Out</a>
             </li>
-          </div>
-          <li class="icon"><a href="javascript:void(0);" style="font-size:15px;" ng-click="vm.responsivenavbar()">&#9776;</a></li>
-        </ul>
-      </nav>
-    </section>-->
+            <li role="menuitem" id="userAuthInfo" ng-show="$root.authUser">
+
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
 </div>
