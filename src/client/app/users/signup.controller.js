@@ -20,14 +20,15 @@
         activate();
 
         function activate() {
-            logger.info('Activated SignUp View');
+            //logger.info('Activated SignUp View');
         }
 
         function submitSignUpForm() {
             var datauser = {
                 'username': vm.username,
                 'email': vm.email,
-                'password': vm.password
+                'password': vm.password,
+                'avatar': "images/avatar/avatar-default.jpg"
             }
             var datausertojson = JSON.stringify(datauser);
             console.log(datausertojson)

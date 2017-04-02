@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.layout')
+    .module('app.layout',['ui.identicon'])
     .controller('MenuController', MenuController);
 
   MenuController.$inject = ['$state', 'routerHelper', '$rootScope', 'dataservice', '$q', 'logger', '$translate', '$translatePartialLoader'];
@@ -44,7 +44,6 @@
 
     function getAuthUser() {
       return dataservice.isLoggedin().then(function (data) {
-        console.log("GetAuthUser");
         $rootScope.authUser = data;
         return $rootScope.authUser;
       });

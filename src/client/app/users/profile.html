@@ -5,7 +5,14 @@
         <div class="widget wviolet">
           <div ht-widget-header title="{{vm.title}}"></div>
           <div class="widget-content user">
-            <h3>Welcome</h3>
+            <h3>Welcome {{$root.authUser.name}}</h3>
+            <img ng-src="{{$root.authUser.avatar}}" alt="avatar">
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="{{$root.authUser.name}}">
+            <label for="username">Username:</label>
+            <input type="text" name="username" value="{{$root.authUser.username}}">
+            <label for="email">Email:</label>
+            <input type="text" name="email" value="{{$root.authUser.email}}">
           </div>
           <div class="widget-foot">
             <div class="clearfix"></div>

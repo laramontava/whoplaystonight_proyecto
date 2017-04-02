@@ -36,12 +36,13 @@ module.exports = function (passport) {
         // by default, local strategy uses username and password, we will override with email
         usernameField: 'username',
         passwordField: 'password',
-        passReqToCallback: true // allows us to pass back the entire request to the callback
+        passReqToCallback: true, // allows us to pass back the entire request to the callback
+        avatar: 'avatar'
     },
         function (req, username, password, done) {
             // we are checking to see if the user trying to login already exists
             console.log('llega a passport');
-
+            
             userModel.countUsers(username, function (error, rows) {
                 if (rows[0].total > 0) {
                     return done(null, false, 'That username is already taken.');
@@ -49,10 +50,11 @@ module.exports = function (passport) {
                     var addnewuserinbd = {
                         username: username,
                         email: req.body.email,
-                        name: '',
+                        name: username,
                         // use the generateHash function in our user model
                         password: bcrypt.hashSync(password, null, null),
-                        type: 'client'
+                        type: 'client',
+                        avatar: req.body.avatar
                     };
                     userModel.addUserDB(addnewuserinbd, function (error, rows) {
                         if (error) {
