@@ -29,10 +29,11 @@
             var data = {
                 name: vm.inputName,
                 from: vm.inputEmail,
-                to: 'whoplaystonight@gmail.com',
+                to: 'laramontava@gmail.com',
                 subject: vm.inputSubject,
                 text: vm.inputMessage,
                 messageDirection: 'to_admin',
+                type: 'contact'
             };
 
             dataservice.sendemail(data).then(function (response) {
@@ -44,10 +45,11 @@
                     var data2 = {
                         name: vm.inputName,
                         from: vm.inputEmail,
-                        to: 'whoplaystonight@gmail.com',
+                        to: 'laramontava@gmail.com',
                         subject: vm.inputSubject,
                         text: vm.inputMessage,
                         messageDirection: 'to_user',
+                        type: 'contact'
                     };
                     dataservice.sendemail(data2).then(function (response) {
                         console.log("sendemail");
@@ -70,7 +72,7 @@
                     vm.inputMessage = '';
                     $timeout(function () {
                         $state.go('main');
-                    }, 3000);
+                    }, 1000);
 
 
                 } else {

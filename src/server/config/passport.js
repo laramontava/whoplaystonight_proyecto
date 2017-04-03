@@ -54,7 +54,9 @@ module.exports = function (passport) {
                         // use the generateHash function in our user model
                         password: bcrypt.hashSync(password, null, null),
                         type: 'client',
-                        avatar: req.body.avatar
+                        avatar: req.body.avatar,
+                        activated: '0',
+                        token: 'asdasdasd'
                     };
                     userModel.addUserDB(addnewuserinbd, function (error, rows) {
                         if (error) {

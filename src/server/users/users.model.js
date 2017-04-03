@@ -17,9 +17,10 @@ usersModel.countUsers = function (username, callback) {
 
 usersModel.addUserDB = function (user, callback) {
     if (connection) {
-        var queryinsert = 'INSERT INTO users ( username, email, name, password, type, avatar )'+
+        var queryinsert = 'INSERT INTO users ( username, email, name, password, type, avatar, activated, token )'+
                             'values ("' + user.username + '","' + user.email +
-                            '","' + user.name + '","' + user.password + '","' + user.type + '","' + user.avatar + '")';
+                            '","' + user.name + '","' + user.password + '","' + user.type + '","' + user.avatar + 
+                            '","' + user.activated + '","' + user.token + '")';
         connection.query(queryinsert, function (error, rows) {
             if (error) {
                 console.log('error insert db');

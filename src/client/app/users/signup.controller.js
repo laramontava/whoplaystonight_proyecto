@@ -5,18 +5,20 @@
         .module('app.users')
         .controller('SignUpController', SignUpController);
 
-    SignUpController.$inject = ['logger', 'dataservice', '$state', '$timeout', '$rootScope'];
+    SignUpController.$inject = ['logger', 'dataservice', '$state', '$timeout', '$rootScope', '$scope'];
     /* @ngInject */
-    function SignUpController(logger, dataservice, $state, $timeout, $rootScope) {
+    function SignUpController(logger, dataservice, $state, $timeout, $rootScope, $scope) {
         var vm = this;
+        var datauser = $rootScope.authUser;
         vm.title = 'SignUp';
         vm.username = '';
         vm.email = '';
         vm.password = '';
         vm.rpassword = '';
+        vm.name = '';
         vm.submitSignUpForm = submitSignUpForm;
         vm.submitSignInForm = submitSignInForm;
-
+        vm.submitEditProfile = submitEditProfile;
         activate();
 
         function activate() {
@@ -38,9 +40,37 @@
                     logger.success("Registered user correctly");
                     $timeout(function () {
                         $state.go('main');
-                    }, 3000);
+                    }, 1000);
                 } else {
                     logger.error("An error has occurred");
+                }
+            });
+            sendSignUp();
+        }
+
+        function sendSignUp() {
+            var data = {
+                name: vm.username,
+                from: vm.email,
+                to: 'laramontava@gmail.com',
+                subject: 'Confirmar registro',
+                text: vm.username,
+                messageDirection: 'to_user',
+                type: 'signup'
+            };
+            dataservice.sendemail(data).then(function (response) {
+                console.log("sendemail");
+                if (response) {
+                    console.log("true");
+                    logger.success("The email has been sent");
+                    vm.email = '';
+                    vm.username = '';
+                    $timeout(function () {
+                        $state.go('main');
+                    }, 1000);
+                }else {
+                    console.log("false");
+                    logger.error("Error sending the email, try later");
                 }
             });
         }
@@ -60,15 +90,26 @@
                     $rootScope.authUser = response.data;
                     console.log(response.data);
                     $timeout(function () {
+                        datauser = $rootScope.authUser
                         $state.go('main');
-                    }, 3000);
+                    }, 1000);
                 } else if (response.data === 'errorcredentials') {
                     logger.error('User or password wrong');
                 } else {
                     logger.error('Server error, try again');
                 }
-
             });
+        }
+
+        function submitEditProfile() {
+            var data = {
+                'username': vm.username,
+                'name': vm.name,
+                'email': vm.email
+            };
+
+            var dataUserJSON = JSON.stringify(data);
+            console.log(dataUserJSON);
         }
 
     }
