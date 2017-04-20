@@ -72,7 +72,7 @@ exports.verifyaccount = function (req, res) {
                 }
             });
         } else {
-            return done(null, false, 'That username is already taken.');
+            res.redirect('/signup');
         }
     });
     //passport.authenticate('local-confirmaccount', { query: ['email', 'token'] })(req, res, next);

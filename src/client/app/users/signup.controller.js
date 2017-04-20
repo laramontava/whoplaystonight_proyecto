@@ -72,7 +72,7 @@
                 console.log("sendemail");
                 if (response) {
                     console.log("true");
-                    logger.success("The email has been sent");
+                    logger.success("Activate your account from the message sent to your mail");
                     vm.email = '';
                     vm.username = '';
                     $timeout(function () {
