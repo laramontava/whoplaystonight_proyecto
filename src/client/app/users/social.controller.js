@@ -25,6 +25,11 @@
             .catch(function(fail){
               return false;
             });
+
+            $http({
+                url: '/api/confirmaccount',
+                method: 'GET'
+            })
         }
     }
 })();

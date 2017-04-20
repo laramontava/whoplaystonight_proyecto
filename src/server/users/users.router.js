@@ -24,4 +24,6 @@ module.exports = function (app) {
         //isloggedin
         //req.isAuthenticated()?res.json(req.user):'0';
     app.get('/api/auth/success', userscontroller.success);
+
+    app.get('/api/verifyaccount', userscontroller.verifyaccount);
 };

@@ -16,11 +16,20 @@
         vm.password = '';
         vm.rpassword = '';
         vm.name = '';
+        vm.text = maketoken();
         vm.submitSignUpForm = submitSignUpForm;
         vm.submitSignInForm = submitSignInForm;
         vm.submitEditProfile = submitEditProfile;
         activate();
+        function maketoken() {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
+            for (var i = 0; i < 50; i++)
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            return text;
+        }
         function activate() {
             //logger.info('Activated SignUp View');
         }
@@ -30,7 +39,8 @@
                 'username': vm.username,
                 'email': vm.email,
                 'password': vm.password,
-                'avatar': "images/avatar/avatar-default.jpg"
+                'avatar': "images/avatar/avatar-default.jpg",
+                'text': vm.text
             }
             var datausertojson = JSON.stringify(datauser);
             console.log(datausertojson)
@@ -45,7 +55,7 @@
                     logger.error("An error has occurred");
                 }
             });
-            sendSignUp();
+            sendSignUp(datausertojson);
         }
 
         function sendSignUp() {
@@ -54,7 +64,7 @@
                 from: vm.email,
                 to: 'laramontava@gmail.com',
                 subject: 'Confirmar registro',
-                text: vm.username,
+                text: vm.text,
                 messageDirection: 'to_user',
                 type: 'signup'
             };
@@ -68,7 +78,7 @@
                     $timeout(function () {
                         $state.go('main');
                     }, 1000);
-                }else {
+                } else {
                     console.log("false");
                     logger.error("Error sending the email, try later");
                 }

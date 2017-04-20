@@ -1,4 +1,5 @@
 var passport = require('passport');
+var userModel = require('./users.model');
 
 exports.signup = function (req, res) {
     console.log(res);
@@ -43,4 +44,45 @@ exports.loggedin = function (req, res) {
     console.log(req.isAuthenticated());
 
     res.send(req.isAuthenticated() ? req.user : '0');
+};
+
+exports.verifyaccount = function (req, res) {
+    console.log("estoy a punto de verificar mi cuenta :D");
+    console.log(req.query.token);
+    console.log(req.query.email);
+    userModel.verifyAccount(req, function (error, rows, callback) {
+        console.log('llega a pasar model------------------------');
+        console.log(req.query.email)
+        console.log(req.query.token)
+        console.log(error)
+        console.log(rows)
+        if (rows[0].total > 0) {
+            var infoaccount = {
+                email: req.query.email,
+                token: req.query.token
+            };
+            userModel.activateAccount(infoaccount, function (error, rows) {
+                console.log(rows)
+                console.log(error)
+                if (error) {
+                    return done(error);
+                }
+                if (rows) {
+                    res.redirect('/');
+                }
+            });
+        } else {
+            return done(null, false, 'That username is already taken.');
+        }
+    });
+    //passport.authenticate('local-confirmaccount', { query: ['email', 'token'] })(req, res, next);
+    /*passport.authenticate('local-confirmaccount', function (err, user, info) {
+        console.log("err")
+        console.log(err)
+        console.log("user")
+        console.log(user)
+        console.log("info")
+        console.log(info)
+    }
+    )(req, res);*/
 };

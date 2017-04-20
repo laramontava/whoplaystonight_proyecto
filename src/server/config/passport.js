@@ -37,12 +37,13 @@ module.exports = function (passport) {
         usernameField: 'username',
         passwordField: 'password',
         passReqToCallback: true, // allows us to pass back the entire request to the callback
-        avatar: 'avatar'
+        avatar: 'avatar',
+        token: 'text'
     },
         function (req, username, password, done) {
             // we are checking to see if the user trying to login already exists
             console.log('llega a passport');
-            
+
             userModel.countUsers(username, function (error, rows) {
                 if (rows[0].total > 0) {
                     return done(null, false, 'That username is already taken.');
@@ -56,7 +57,7 @@ module.exports = function (passport) {
                         type: 'client',
                         avatar: req.body.avatar,
                         activated: '0',
-                        token: 'asdasdasd'
+                        token: req.body.text
                     };
                     userModel.addUserDB(addnewuserinbd, function (error, rows) {
                         if (error) {
@@ -95,6 +96,19 @@ module.exports = function (passport) {
         })
     );
 
+    passport.use('local-confirmaccount', new LocalStrategy({
+        info: ['email', 'token'],
+        passReqToCallback: true, // allows us to pass back the entire request to the callback
+    },
+        function (req, done) {
+            // we are checking to see if the user trying to login already exists
+            userModel.verifyAccount(req, function (error, rows) {
+                console.log('llega a passport------------------------');
+                console.log(req.query.email)
+                console.log(req.query.token)
+            });
+        }
+    ));
 
     // =========================================================================
     // FACEBOOK  SIGNIN ========================================================

@@ -48,4 +48,33 @@ usersModel.getUser = function (user, callback) {
     }
 };
 
+usersModel.verifyAccount = function (req, callback) {
+    if(connection) {
+        connection.query('SELECT COUNT(*) as total FROM users WHERE email like "' + req.query.email + '" AND token like "' + req.query.token + '"',
+        function (error, row) {
+            if (error) {
+                throw error;
+            } else {
+                callback(null, row);
+            }
+        });
+    }
+};
+
+usersModel.activateAccount = function (info, callback) {
+    if(connection) {
+        console.log("info:")
+        console.log(info.email);
+        console.log(info.token);
+        connection.query('UPDATE users SET activated=1 WHERE email="'+info.email+'" AND token="'+ info.token +'"',
+        function (error, row) {
+            if (error) {
+                throw error;
+            } else {
+                callback(null, row);
+            }
+        });
+    }
+}
+
 module.exports = usersModel;
