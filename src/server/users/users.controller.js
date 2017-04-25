@@ -20,8 +20,11 @@ exports.signin = function (req, res, next) {
         if (err) {
             return res.send('err');
         }
-        if (!user) {
+        if (!user && info === "wrongpassword") {
             return res.send('errorcredentials');
+        }
+        if(info === "notactivated"){
+            return res.send('notactivated');
         }
         return res.send(user);
     })(req, res, next);

@@ -87,8 +87,10 @@ module.exports = function (passport) {
                 if (!bcrypt.compareSync(password, rows[0].password)) {
 
                     return done(null, false, 'wrongpassword');
-                } else {
-
+                } else if (rows[0].activated != 1){
+                    return done(null, false, 'notactivated');
+                }else {
+                    console.log(rows[0])
                     return done(null, rows[0]);
                 }
             });

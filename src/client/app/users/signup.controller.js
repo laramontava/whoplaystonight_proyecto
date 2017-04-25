@@ -105,7 +105,9 @@
                     }, 1000);
                 } else if (response.data === 'errorcredentials') {
                     logger.error('User or password wrong');
-                } else {
+                } else if(response.data === 'notactivated') {
+                    logger.error('Your account is not activated');
+                }else {
                     logger.error('Server error, try again');
                 }
             });

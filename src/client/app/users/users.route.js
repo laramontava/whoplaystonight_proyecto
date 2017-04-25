@@ -39,16 +39,6 @@
           url: '/socialsignin',
           controller: 'SocialController'
         }
-      },
-      {
-        state: 'profile',
-        config: {
-          url: '/profile',
-          templateUrl: 'app/users/profile.html',
-          controller: 'SignUpController',
-          controllerAs: 'vm',
-          title: 'Profile',
-        }
       }
     ];
   }

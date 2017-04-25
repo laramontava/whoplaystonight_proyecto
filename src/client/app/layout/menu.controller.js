@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.layout',['ui.identicon'])
+    .module('app.layout')
     .controller('MenuController', MenuController);
 
   MenuController.$inject = ['$state', 'routerHelper', '$rootScope', 'dataservice', '$q', 'logger', '$translate', '$translatePartialLoader'];
