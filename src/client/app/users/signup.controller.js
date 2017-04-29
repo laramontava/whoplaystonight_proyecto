@@ -39,7 +39,7 @@
                 'username': vm.username,
                 'email': vm.email,
                 'password': vm.password,
-                'avatar': "images/avatar/avatar-default.jpg",
+                'avatar': "images/avatar/default-avatar.jpg",
                 'text': vm.text
             }
             var datausertojson = JSON.stringify(datauser);

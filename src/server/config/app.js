@@ -62,21 +62,18 @@ switch (environment) {
     // Any deep link calls should return index.html
     app.use('/*', express.static('./build/index.html'));
     console.log('WARNING: OPEN BROWSER WITH HTTPS');
-
+    
     https.createServer({
-      key: fs.readFileSync('server.key'),
-      cert: fs.readFileSync('server.crt')
+      key: fs.readFileSync('privkey.pem'),
+      cert:fs.readFileSync('cert.pem'),
+      ca: fs.readFileSync('chain.pem')
     }, app).listen(port);
 
-    app.use(forceSSL);//MODULE USED TO FORCE REDIRECTION
-    console.log('WARNING: BE CAREFULL, WE ARE TRYING TO LAUNCH SERVER ON PORT 80.' +
-      'CHECK IF ANY OTHER SERVER IS LISTENING ON SAME PORT (APACHE...)' +
-      'WE WANT TO FORCE HTTP TO HTTPS REDIRECTION ALWAYS');
-    //     http.createServer(app).listen(80);
-    http.createServer(function (req, res) {
-      res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-      res.end();
-    }).listen(80);
+     app.use(forceSSL);//MODULE USED TO FORCE REDIRECTION
+     console.log('WARNING: BE CAREFULL, WE ARE TRYING TO LAUNCH SERVER ON PORT 80.' +
+                 'CHECK IF ANY OTHER SERVER IS LISTENING ON SAME PORT (APACHE...)' +
+                 'WE WANT TO FORCE HTTP TO HTTPS REDIRECTION ALWAYS');
+     http.createServer(app).listen(80);
     break;
   default:
     console.log('** DEV **');
@@ -92,8 +89,8 @@ switch (environment) {
     app.listen(port, function () {
       console.log('Express server listening on port ' + port);
       console.log('env = ' + app.get('env') +
-        '\n__dirname = ' + __dirname +
-        '\nprocess.cwd = ' + process.cwd());
+      '\n__dirname = ' + __dirname +
+      '\nprocess.cwd = ' + process.cwd());
     });
 
     break;
