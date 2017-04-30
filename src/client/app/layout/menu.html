@@ -32,10 +32,10 @@
               <a role="button" target="_self" href="api/loginTwitter"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
             </li>
             <li role="menuitem" ng-hide="$root.authUser">
-              <a role="button" target="_self" href="/signin" ng-show="!$root.authUser">Sign In</a>
+              <a role="button" target="_self" href="/signin" ng-show="!$root.authUser">{{'SIGN_IN' | translate}}</a>
             </li>
             <li role="menuitem" ng-hide="$root.authUser">
-              <a role="button" target="_self" href="/signup" ng-show="!$root.authUser">Sign Up</a>
+              <a role="button" target="_self" href="/signup" ng-show="!$root.authUser">{{'SIGN_UP' | translate}}</a>
             </li>
             <li role="menuitem" id="userAuthInfo" ng-show="$root.authUser">
               <a role="button" href="/profile"> <img width="30" height="30" class="avatar" ng-src="{{$root.authUser.avatar}}" /> {{'WELCOME' | translate}} {{ $root.authUser.name}}{{

@@ -84,3 +84,16 @@ td a {
 .angular-google-map-container {
   height: 400px;
 }
+
+/*--------------------------------------- Modal --*/
+#modal-body {
+  padding: 15px;
+  .info_event {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      img {
+        height: 200px;
+      }
+  }
+}

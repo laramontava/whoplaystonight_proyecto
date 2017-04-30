@@ -225,6 +225,16 @@ td a {
 .angular-google-map-container {
   height: 400px; }
 
+/*--------------------------------------- Modal --*/
+#modal-body {
+  padding: 15px; }
+  #modal-body .info_event {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; }
+    #modal-body .info_event img {
+      height: 200px; }
+
 /*------------- Contact */
 section.contact {
   max-width: 1200px;

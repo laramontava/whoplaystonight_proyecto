@@ -1,5 +1,8 @@
 {
     "WELCOME_MAIN": "Bienvenido a ",
     "MAIN_INFO": "La APP para los fans de música en vivo.",
-    "MAIN_SEARCH": "Introduce el nombre de una banda para buscar conciertos"
+    "MAIN_SEARCH": "Introduce el nombre de una banda para buscar conciertos",
+    "FRASE_1": "¿Estás aburrido? ¿Te gusta la música?",
+    "FRASE_2": "¿Por qué no buscas un concierto cerca de ti?",
+    "FRASE_3": "O puedes planear un viaje y la distancia no te importa."
 }
