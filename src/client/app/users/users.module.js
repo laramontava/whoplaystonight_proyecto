@@ -3,7 +3,8 @@
 
   angular.module('app.users', [
     'app.core',
-    'app.widgets'
+    'app.widgets',
+    'thatisuday.dropzone'
   ]);
 
 })();

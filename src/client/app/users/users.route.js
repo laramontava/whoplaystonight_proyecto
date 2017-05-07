@@ -39,6 +39,19 @@
           url: '/socialsignin',
           controller: 'SocialController'
         }
+      },
+      {
+        state: 'profile',
+        config: {
+          url: '/profile',
+          templateUrl: 'app/users/profile.html',
+          controller: 'ProfileController',
+          controllerAs: 'vm',
+          title: 'Profile'/*,
+          resolve:{
+            loggedin: dataservice.checkLoggedin
+          }*/
+        }
       }
     ];
   }

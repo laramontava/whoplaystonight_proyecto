@@ -17,7 +17,8 @@
             checkLoggedin: checkLoggedin,
             isLoggedin: isLoggedin,
             logout: logout,
-            SignIn: SignIn
+            SignIn: SignIn,
+            UpdateProfile: UpdateProfile
         };
 
         return service;
@@ -86,7 +87,20 @@
                 return false;
             }
         }
+        function UpdateProfile(data) {
+            console.log(data);
+            return $http.post('/api/updateprofile', data)
+                .then(success)
+                .catch(fail);
 
+            function success() {
+                return true;
+            }
+
+            function fail() {
+                return false;
+            }
+        }
         function SignIn(data) {
             return $http.post('/api/signin', data)
                 .then(success)
@@ -107,12 +121,11 @@
                 .catch(fail);
 
             function success(responseUser) {
-                console.log('success:');
+                console.log('success:--------------------');
                 console.log(responseUser);
                 if (responseUser.data === '0') {
                     $rootScope.authUser = false;
-                    $state.go('loginpage');
-                    //  $state.go('login');
+                    $state.go('signin');
                 } else {
                     console.log('else:');
                     console.log(responseUser.data);

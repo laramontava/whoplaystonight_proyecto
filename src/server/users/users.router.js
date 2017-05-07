@@ -26,4 +26,8 @@ module.exports = function (app) {
     app.get('/api/auth/success', userscontroller.success);
 
     app.get('/api/verifyaccount', userscontroller.verifyaccount);
+
+    app.post('/api/updateprofile', userscontroller.updateprofile);
+
+    app.post('/api/uploadavatar', userscontroller.uploadavatar);
 };

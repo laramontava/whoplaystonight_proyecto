@@ -1,0 +1,20 @@
+<section class="mainbar">
+  
+  <img ng-src="{{vm.avatar}}"></img>
+  <ng-dropzone class="dropzone" options="dzOptions" callbacks="dzCallbacks" methods="dzMethods"></ng-dropzone>
+  <form id="update_form" name="update_form">
+    <div class='form-group'>
+      <label for="name">Name:</label>
+      <input type="text" ng-model="vm.name" class='form-control' name='name' required ng-class='{ error: update_form.username.$invalid && !update_form.$pristine, warning: update_form.username.$error.name }'>
+      <span ng-show='!update_form.$pristine && update_form.name.$error.required'>Name is required</span>
+    </div>
+
+    <div class='form-group'>
+      <label for="email">Email</label>
+      <input type="email" ng-model='vm.email' class='form-control' value="{{$root.authUser.email}}" name='email' required ng-class='{ error: update_form.email.$invalid && !update_form.$pristine }'>
+      <span ng-show='!update_form.$pristine && update_form.email.$error.required'>Email is required</span>
+    </div>
+    <br />
+    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="update_form.$invalid" ng-click="vm.submitEditProfile()">Update</button>
+  </form>
+</section>

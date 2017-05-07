@@ -46,7 +46,7 @@ module.exports = function (passport) {
 
             userModel.countUsers(username, function (error, rows) {
                 if (rows[0].total > 0) {
-                    return done(null, false, 'That username is already taken.');
+                    return done(null, false, 'usernametaken.');
                 } else {
                     var addnewuserinbd = {
                         username: username,
@@ -87,14 +87,39 @@ module.exports = function (passport) {
                 if (!bcrypt.compareSync(password, rows[0].password)) {
 
                     return done(null, false, 'wrongpassword');
-                } else if (rows[0].activated != 1){
+                } else if (rows[0].activated != 1) {
                     return done(null, false, 'notactivated');
-                }else {
+                } else {
                     console.log(rows[0])
                     return done(null, rows[0]);
                 }
             });
 
+        })
+    );
+
+    passport.use('updateprofile', new LocalStrategy({
+        username: 'username',
+        email: 'email',
+        avatar: 'avatar',
+        name: 'name',
+        passReqToCallback: true
+    },
+        function (req, done) {
+            var edituserinfo = {
+                username: username,
+                email: req.body.email,
+                name: req.body.name,
+                avatar: req.body.avatar
+            };
+            userModel.editUserDB(edituserinfo, function (error, rows) {
+                /*if (error) {
+                    return done(error);
+                }
+                if (rows) {
+                    return done(null, edituserinfo);
+                }*/
+            });
         })
     );
 

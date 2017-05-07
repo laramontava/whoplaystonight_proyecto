@@ -11,7 +11,6 @@
     'app.main',
     'app.locate',
     'app.users',
-    'app.profile',
   ]);
 
 })();

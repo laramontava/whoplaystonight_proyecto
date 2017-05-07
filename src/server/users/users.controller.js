@@ -16,6 +16,7 @@ exports.signup = function (req, res) {
 };
 
 exports.signin = function (req, res, next) {
+    console.log(res);
     passport.authenticate('local-login', function (err, user, info) {
         if (err) {
             return res.send('err');
@@ -23,7 +24,7 @@ exports.signin = function (req, res, next) {
         if (!user && info === "wrongpassword") {
             return res.send('errorcredentials');
         }
-        if(info === "notactivated"){
+        if (info === "notactivated") {
             return res.send('notactivated');
         }
         return res.send(user);
@@ -44,8 +45,8 @@ exports.success = function (req, res) {
 exports.loggedin = function (req, res) {
     console.log('LOGGEDIN ' + JSON.stringify(req.user));
     console.log('session ' + JSON.stringify(req.session));
-    console.log(req.isAuthenticated());
-
+    console.log(req);
+    console.log("req.isAuthenticated()");
     res.send(req.isAuthenticated() ? req.user : '0');
 };
 
@@ -89,3 +90,35 @@ exports.verifyaccount = function (req, res) {
     }
     )(req, res);*/
 };
+
+exports.updateprofile = function (req, res) {
+    console.log("actualizar cuenta...............................")
+    //console.log(res);
+    var edituserinfo = {
+        username: req.body.username,
+        email: req.body.email,
+        name: req.body.name,
+        avatar: req.body.avatar
+    };
+    console.log(edituserinfo)
+    /*passport.authenticate('updateprofile', function (err, user, info) {
+        console.log("asdasd")
+    }
+    )(req, res);*/
+    userModel.editUserDB(edituserinfo, function (error, rows) {
+        console.log(rows)
+        console.log(error)
+        if (error) {
+            return done(error);
+        }
+        if (rows) {
+            res.redirect('/');
+        }
+    });
+};
+
+exports.uploadavatar = function (req, res) {
+    console.log("avatar---------------------")
+    //var dz = req.dzMethods.getDropzone();
+    console.log(req.body);
+}

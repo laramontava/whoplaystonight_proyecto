@@ -61,6 +61,21 @@ usersModel.verifyAccount = function (req, callback) {
     }
 };
 
+usersModel.editUserDB = function (userdata, callback) {
+    if (connection) {
+        console.log("llega a model para editar el perfil")
+        console.log(userdata)
+        connection.query('UPDATE users SET name="'+userdata.name+'", email="'+userdata.email+'" WHERE username="'+userdata.username+'"',
+        function (error, row) {
+            if (error) {
+                throw error;
+            } else {
+                callback(null, row);
+            }
+        });
+    }
+};
+
 usersModel.activateAccount = function (info, callback) {
     if(connection) {
         console.log("info:")
