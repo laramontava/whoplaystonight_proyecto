@@ -113,12 +113,12 @@ module.exports = function (passport) {
                 avatar: req.body.avatar
             };
             userModel.editUserDB(edituserinfo, function (error, rows) {
-                /*if (error) {
+                if (error) {
                     return done(error);
                 }
                 if (rows) {
                     return done(null, edituserinfo);
-                }*/
+                }
             });
         })
     );

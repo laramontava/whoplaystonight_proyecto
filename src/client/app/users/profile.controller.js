@@ -32,6 +32,7 @@
     function submitEditProfile() {
       var data = {
         'username': datauser.username,
+        'password': datauser.password,
         'name': vm.name,
         'email': vm.email,
         'avatar': datauser.avatar
@@ -39,14 +40,19 @@
 
       var dataUserJSON = JSON.stringify(data);
       dataservice.UpdateProfile(dataUserJSON).then(function (response) {
+        console.log("Editado correctamente")
         console.log(response)
+        console.log(response.data)
+        if (response == "error") {
+          logger.error("No se ha podido modificar el perfil");
+        }
         if (response == true) {
-          logger.success("Registered user correctly");
+          logger.success("Profile updated!");
           $timeout(function () {
             $state.go('main');
           }, 1000);
         } else {
-          logger.error("An error has occurred");
+          logger.error("No se ha podido modificar el perfil");
         }
       });
     }

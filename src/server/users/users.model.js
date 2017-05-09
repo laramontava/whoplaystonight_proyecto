@@ -75,7 +75,18 @@ usersModel.editUserDB = function (userdata, callback) {
         });
     }
 };
-
+usersModel.getnewinfo = function (userdata, callback) {
+    if(connection) {
+        connection.query('SELECT * FROM users WHERE username like "' + userdata.username + '"',
+        function (error, row) {
+            if (error) {
+                throw error;
+            } else {
+                callback(null, row);
+            }
+        });
+    }
+}
 usersModel.activateAccount = function (info, callback) {
     if(connection) {
         console.log("info:")

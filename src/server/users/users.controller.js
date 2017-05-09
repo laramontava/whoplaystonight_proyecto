@@ -95,24 +95,35 @@ exports.updateprofile = function (req, res) {
     console.log("actualizar cuenta...............................")
     //console.log(res);
     var edituserinfo = {
-        username: req.body.username,
+        username: "areq.body.username",
         email: req.body.email,
         name: req.body.name,
         avatar: req.body.avatar
     };
     console.log(edituserinfo)
     /*passport.authenticate('updateprofile', function (err, user, info) {
-        console.log("asdasd")
+        console.log(user)
     }
     )(req, res);*/
     userModel.editUserDB(edituserinfo, function (error, rows) {
-        console.log(rows)
+        console.log("redultado de editar")
+        console.log(rows.changedRows)
         console.log(error)
-        if (error) {
-            return done(error);
+        if (error || rows.changedRows === 0) {
+            return res.send("error");
         }
-        if (rows) {
-            res.redirect('/');
+        if (rows && rows.changedRows > 0) {
+            /*userModel.getnewinfo(edituserinfo, function (error, rows){
+                console.log("resultado .....................")
+                console.log(rows)
+                console.log("cogiendo nuevos datos")
+                console.log(rows[0])
+                if(error){
+                    return done(error);
+                }
+                return res.send(rows);
+            });*/
+            return res.send(edituserinfo);
         }
     });
 };
