@@ -46,7 +46,7 @@ module.exports = function (passport) {
 
             userModel.countUsers(username, function (error, rows) {
                 if (rows[0].total > 0) {
-                    return done(null, false, 'usernametaken.');
+                    return done(null, false, 'usernametaken');
                 } else {
                     var addnewuserinbd = {
                         username: username,

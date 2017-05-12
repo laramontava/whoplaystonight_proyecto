@@ -5,9 +5,9 @@
     .module('app.events')
     .controller('EventsController', EventsController);
 
-  EventsController.$inject = ['logger', '$rootScope', 'dataservice'];
+  EventsController.$inject = ['logger', '$rootScope', 'dataservice', '$state'];
   /* @ngInject */
-  function EventsController(logger, $rootScope, dataservice) {
+  function EventsController(logger, $rootScope, dataservice, $state) {
     var vm = this;
     vm.title = 'Create Events';
     vm.submitAddEventForm = submitAddEventForm;
@@ -35,7 +35,16 @@
       var dataeventJson = JSON.stringify(dataevent);
       console.log(dataeventJson)
       dataservice.CreateEvent(dataeventJson).then(function (response) {
-        
+        console.log(response);
+        if (response === true) {
+          logger.success('Event created correctly');
+          $state.go('main');
+        } else if (response === 'err') {
+          logger.error('Error creating the event, try again later');
+          $state.go('main');
+        } else {
+          logger.error('Server error, try again later');
+        }
       });
     }
   }

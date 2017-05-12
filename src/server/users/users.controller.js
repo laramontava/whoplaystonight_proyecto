@@ -95,7 +95,7 @@ exports.updateprofile = function (req, res) {
     console.log("actualizar cuenta...............................")
     //console.log(res);
     var edituserinfo = {
-        username: "areq.body.username",
+        username: areq.body.username,
         email: req.body.email,
         name: req.body.name,
         avatar: req.body.avatar
