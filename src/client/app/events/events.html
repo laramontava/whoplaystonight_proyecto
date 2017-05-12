@@ -1,0 +1,116 @@
+<section class="mainbar">
+  <section class="matter">
+    <div class="container">
+      <div class="row">
+        <div class="widget wviolet">
+          <h2>Create a new event:</h2>
+          <div class="widget-content user">
+            <form name='signupform'>
+              <!-- Name -->
+              <div class='form-group'>
+                <label for="name">Name of group</label>
+                <input type="text" class='form-control' placeholder='name' name='name' ng-model='vm.name' required ng-class='{ error: signupform.name.$invalid && !signupform.$pristine, warning: signupform.name.$error.name }'>
+                <span ng-show='!signupform.$pristine && signupform.name.$error.required'>Name is required</span>
+              </div>
+
+              <!-- Description -->
+              <div class="form-group" ng-class="{ 'has-error' : signupform.username.$invalid && !signupform.username.$pristine }">
+                <label for="description">Description</label><br>
+                <textarea required ng-model="vm.description" ng-minlength="3" ng-maxlength="20" rows="4" id="description" name="description"
+                  placeholder="Type your message" style="max-width: 100%;" dir="auto"></textarea>
+                  <p ng-show="signupform.description.$error.minlength" class="help-block">Description is too short.</p>
+                  <p ng-show="signupform.description.$error.maxlength" class="help-block">Description is too long.</p>
+              </div>
+
+              <!-- Type event -->
+              <div class='form-group'>
+                <label for="type">Type event</label>
+                <input type="text" class='form-control' placeholder='Apertura' name='type' ng-model='vm.type'
+                  required ng-class='{ error: signupform.type.$invalid && !signupform.$pristine, warning: signupform.type.$error.type }'>
+                  <span ng-show='!signupform.$pristine && signupform.type.$error.required'>type is required</span>
+                  <span ng-show='!signupform.$pristine && signupform.type.$error.pattern'>Enter a valid type</span>
+              </div>
+
+              <!-- Participants -->
+              <div class='form-group'>
+                <label for="participants">Number of members</label>
+                <input type="number" class='form-control' placeholder='Apertura' name='participants' ng-model='vm.participants'
+                  required ng-class='{ error: signupform.participants.$invalid && !signupform.$pristine, warning: signupform.participants.$error.participants }'>
+                  <span ng-show='!signupform.$pristine && signupform.participants.$error.required'>participants is required</span>
+                  <span ng-show='!signupform.$pristine && signupform.participants.$error.pattern'>Enter a valid participants</span>
+              </div>
+
+              <!-- Date event -->
+              <div class='form-group'>
+                <label for="date">Date event</label>
+                <input type="text" class='form-control' placeholder='Apertura' name='date' ng-model='vm.date'
+                  required ng-class='{ error: signupform.date.$invalid && !signupform.$pristine, warning: signupform.date.$error.date }'>
+                  <span ng-show='!signupform.$pristine && signupform.date.$error.required'>date is required</span>
+                  <span ng-show='!signupform.$pristine && signupform.date.$error.pattern'>Enter a valid date</span>
+              </div>
+
+              <!-- Access -->
+              <div class='form-group'>
+                <label for="access">Type access</label>
+                <input type="text" class='form-control' placeholder='Apertura' name='access' ng-model='vm.access'
+                  required ng-class='{ error: signupform.access.$invalid && !signupform.$pristine, warning: signupform.access.$error.access }'>
+                  <span ng-show='!signupform.$pristine && signupform.access.$error.required'>access is required</span>
+                  <span ng-show='!signupform.$pristine && signupform.access.$error.pattern'>Enter a valid access</span>
+              </div>
+
+              <!-- Date ticket -->
+              <div class='form-group'>
+                <label for="dateticket">Date ticket</label>
+                <input type="text" class='form-control' placeholder='Apertura' name='dateticket' ng-model='vm.dateticket'
+                  required ng-class='{ error: signupform.dateticket.$invalid && !signupform.$pristine, warning: signupform.dateticket.$error.dateticket }'>
+                  <span ng-show='!signupform.$pristine && signupform.dateticket.$error.required'>dateticket is required</span>
+                  <span ng-show='!signupform.$pristine && signupform.dateticket.$error.pattern'>Enter a valid dateticket</span>
+              </div>
+
+              <!-- Oppening ticket -->
+              <div class='form-group'>
+                <label for="oppeningticket">Oppening ticket</label>
+                <input type="text" class='form-control' placeholder='Apertura' name='oppeningticket' ng-model='vm.oppeningticket'
+                  required ng-class='{ error: signupform.oppeningticket.$invalid && !signupform.$pristine, warning: signupform.oppeningticket.$error.oppeningticket }'>
+                  <span ng-show='!signupform.$pristine && signupform.oppeningticket.$error.required'>oppeningticket is required</span>
+                  <span ng-show='!signupform.$pristine && signupform.oppeningticket.$error.pattern'>Enter a valid oppeningticket</span>
+              </div>
+
+              <!-- Start event -->
+              <div class='form-group'>
+                <label for="startevent">Start event</label>
+                <input type="text" class='form-control' placeholder='Apertura' name='startevent' ng-model='vm.startevent'
+                  required ng-class='{ error: signupform.startevent.$invalid && !signupform.$pristine, warning: signupform.startevent.$error.startevent }'>
+                  <span ng-show='!signupform.$pristine && signupform.startevent.$error.required'>startevent is required</span>
+                  <span ng-show='!signupform.$pristine && signupform.startevent.$error.pattern'>Enter a valid startevent</span>
+              </div>
+
+              <!-- End event -->
+              <div class='form-group'>
+                <label for="endevent">End event</label>
+                <input type="text" class='form-control' placeholder='Apertura' name='endevent' ng-model='vm.endevent'
+                  required ng-class='{ error: signupform.endevent.$invalid && !signupform.$pristine, warning: signupform.endevent.$error.endevent }'>
+                  <span ng-show='!signupform.$pristine && signupform.endevent.$error.required'>endevent is required</span>
+                  <span ng-show='!signupform.$pristine && signupform.endevent.$error.pattern'>Enter a valid endevent</span>
+              </div>
+
+              <!-- Town -->
+              <div class='form-group'>
+                <label for="town">Town</label>
+                <input type="text" class='form-control' placeholder='Apertura' name='town' ng-model='vm.town'
+                  required ng-class='{ error: signupform.town.$invalid && !signupform.$pristine, warning: signupform.town.$error.town }'>
+                  <span ng-show='!signupform.$pristine && signupform.town.$error.required'>town is required</span>
+                  <span ng-show='!signupform.$pristine && signupform.town.$error.pattern'>Enter a valid town</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary" ng-hide='!signupform.$valid' ng-click="vm.submitAddEventForm()">Submit</button>
+            </form>
+          </div>
+          <div class="widget-foot">
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
