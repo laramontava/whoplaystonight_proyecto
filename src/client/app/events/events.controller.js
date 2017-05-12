@@ -5,9 +5,9 @@
     .module('app.events')
     .controller('EventsController', EventsController);
 
-  EventsController.$inject = ['logger'];
+  EventsController.$inject = ['logger', '$rootScope', 'dataservice'];
   /* @ngInject */
-  function EventsController(logger) {
+  function EventsController(logger, $rootScope, dataservice) {
     var vm = this;
     vm.title = 'Create Events';
     vm.submitAddEventForm = submitAddEventForm;
@@ -30,9 +30,13 @@
         'endevent': vm.endevent,
         'town': vm.town,
         'poster': "images/events/events_default_image.jpg",
+        'creadopor': $rootScope.authUser.username
       }
       var dataeventJson = JSON.stringify(dataevent);
       console.log(dataeventJson)
+      dataservice.CreateEvent(dataeventJson).then(function (response) {
+        
+      });
     }
   }
 })();

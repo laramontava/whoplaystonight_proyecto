@@ -18,7 +18,8 @@
             isLoggedin: isLoggedin,
             logout: logout,
             SignIn: SignIn,
-            UpdateProfile: UpdateProfile
+            UpdateProfile: UpdateProfile,
+            CreateEvent: CreateEvent
         };
 
         return service;
@@ -176,6 +177,20 @@
                 });
         }
 
+        function CreateEvent(data) {
+            console.log(data);
+            return $http.post('/api/createevent', data)
+                .then(success)
+                .catch(fail);
+
+            function success() {
+                return true;
+            }
+
+            function fail() {
+                return false;
+            }
+        }
     }
 
 })();
