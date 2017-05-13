@@ -113,7 +113,7 @@ exports.updateprofile = function (req, res) {
             return res.send("error");
         }
         if (rows && rows.changedRows > 0) {
-            /*userModel.getnewinfo(edituserinfo, function (error, rows){
+            userModel.getnewinfo(edituserinfo, function (error, rows){
                 console.log("resultado .....................")
                 console.log(rows)
                 console.log("cogiendo nuevos datos")
@@ -122,8 +122,7 @@ exports.updateprofile = function (req, res) {
                     return done(error);
                 }
                 return res.send(rows);
-            });*/
-            return res.send(edituserinfo);
+            });
         }
     });
 };
