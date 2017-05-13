@@ -3,5 +3,6 @@
     "LOCATION": " Mountain View, UK",
     "WELCOME": "Welcome",
     "SIGN_IN": "Login",
-    "SIGN_UP": "SignUp"
+    "SIGN_UP": "SignUp",
+    "CREATE_EVENT": "Create event"
 }

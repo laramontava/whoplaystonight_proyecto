@@ -16,7 +16,7 @@
     vm.setLang = setLang;
     vm.responsivenavbar = responsivenavbar;
     activate();
-
+    
     function activate() {
       getNavRoutes();
 

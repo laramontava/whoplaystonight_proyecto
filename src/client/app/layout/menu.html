@@ -17,6 +17,9 @@
               ng-repeat="r in vm.navRoutes">
               <a role="button" class="links" ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
               </li>
+              <li role="menuitem" ng-show="$root.authUser && ($root.authUser.type == 'admin' || 'musician')">
+                <a role="button" href="/createevent">{{'CREATE_EVENT' | translate}}</a>
+              </li>
               <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Lang<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li> <a ng-click="vm.setLang('en')" translate="ENGLISH">{{'ENGLISH' | translate}}</a></li>
