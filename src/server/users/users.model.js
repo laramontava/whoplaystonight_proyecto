@@ -102,5 +102,17 @@ usersModel.activateAccount = function (info, callback) {
         });
     }
 }
+usersModel.getEventsProfile = function (username, callback) {
+    if(connection){
+    var query='SELECT * FROM event WHERE creado_por = "'+ username +'"';
+    connection.query(query, function(error, rows){
+      if(error){
+        throw error;
+      }else{
+        callback(null, rows);
+      }
+    });
+  }
+}
 
 module.exports = usersModel;

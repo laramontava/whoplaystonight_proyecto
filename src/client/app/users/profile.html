@@ -1,5 +1,5 @@
-<section class="mainbar">
-  
+<section class="profile">
+
   <img ng-src="{{vm.avatar}}"></img>
   <ng-dropzone class="dropzone" options="dzOptions" callbacks="dzCallbacks" methods="dzMethods"></ng-dropzone>
   <form id="update_form" name="update_form">
@@ -17,4 +17,26 @@
     <br />
     <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="update_form.$invalid" ng-click="vm.submitEditProfile()">Update</button>
   </form>
+</section>
+<hr/>
+<section class="events">
+  <h2>{{'MY_EVENTS' | translate}}</h2>
+  <table class="table table-condensed table-striped">
+    <thead>
+      <tr>
+        <th>{{'TOWN_TH' | translate}}</th>
+        <th>{{'BANDNAME_TH' | translate}}</th>
+        <th>{{'DATEEVENT_TH' | translate}}</th>
+        <th>{{'STARTTIME_TH' | translate}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="evs in vm.events.data">
+        <td>{{evs.town}}</td>
+        <td>{{evs.band_name}}</td>
+        <td>{{evs.date_event}}</td>
+        <td>{{evs.start}}</td>
+      </tr>
+    </tbody>
+  </table>
 </section>

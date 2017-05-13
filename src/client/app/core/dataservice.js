@@ -19,7 +19,8 @@
             logout: logout,
             SignIn: SignIn,
             UpdateProfile: UpdateProfile,
-            CreateEvent: CreateEvent
+            CreateEvent: CreateEvent,
+            getEventsProfile: getEventsProfile,
         };
 
         return service;
@@ -74,6 +75,22 @@
             }
         }//end of getEvents
 
+        function getEventsProfile(data) {
+            console.log("en data")
+            console.log(data)
+            return $http.post('/api/eventsprofile', data)
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                return response;
+            }
+
+            function fail(e) {
+                return exception.catcher('XHR Failed for getEvents')(e);
+            }
+        }
+
         function SignUp(data) {
             console.log(data);
             return $http.post('/api/signup', data)
@@ -94,8 +111,8 @@
                 .then(success)
                 .catch(fail);
 
-            function success() {
-                return true;
+            function success(response) {
+                return response;
             }
 
             function fail() {

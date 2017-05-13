@@ -14,6 +14,7 @@
       vm.name = $rootScope.authUser.name;
       vm.email = $rootScope.authUser.email;
       vm.avatar = $rootScope.authUser.avatar;
+      vm.events = getEvents();
     } else {
       $state.go('signin');
     }
@@ -24,9 +25,22 @@
     activate();
 
     function activate() {
-      console.log("datauser")
-      console.log(datauser)
       Dropzone.autoDiscover = false;
+    }
+
+    function getEvents() {
+      var username = {
+        'username': datauser.username
+      };
+      var UserJSON = JSON.stringify(username);
+      console.log("UserJSON")
+      console.log(UserJSON)
+      console.log('Estic al getEvents del controller');
+      return dataservice.getEventsProfile(UserJSON).then(function (data) {
+        console.log(data);
+        vm.events = data;
+        return vm.events;
+      });
     }
 
     function submitEditProfile() {
@@ -65,12 +79,12 @@
       dictRemoveFile: 'Remove photo',
       dictResponseError: 'Could not upload this photo',
       paramName: 'photo',
-      renameFilename: $rootScope.authUser.username+'-avatar',
+      renameFilename: $rootScope.authUser.username + '-avatar',
       maxFilesize: '10',
       maxFiles: '1'
     };
     vm.dzCallbacks = {};
-	  vm.dzMethods = {};
-    
+    vm.dzMethods = {};
+
   }
 })();

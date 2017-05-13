@@ -95,7 +95,7 @@ exports.updateprofile = function (req, res) {
     console.log("actualizar cuenta...............................")
     //console.log(res);
     var edituserinfo = {
-        username: areq.body.username,
+        username: req.body.username,
         email: req.body.email,
         name: req.body.name,
         avatar: req.body.avatar
@@ -133,3 +133,14 @@ exports.uploadavatar = function (req, res) {
     //var dz = req.dzMethods.getDropzone();
     console.log(req.body);
 }
+
+exports.getEventsProfile = function (req, res) {
+    console.log("llego hasta aqui")
+    console.log(req.body.username)
+    userModel.getEventsProfile(req.body.username, function (error, data) {
+        if (error) {
+            res.send(error);
+        }
+        res.json(200, data);
+    });
+};

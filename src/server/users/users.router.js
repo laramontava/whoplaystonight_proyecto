@@ -30,4 +30,6 @@ module.exports = function (app) {
     app.post('/api/updateprofile', userscontroller.updateprofile);
 
     app.post('/api/uploadavatar', userscontroller.uploadavatar);
+
+    app.post('/api/eventsprofile', userscontroller.getEventsProfile);
 };
