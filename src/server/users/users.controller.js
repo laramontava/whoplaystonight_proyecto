@@ -1,5 +1,6 @@
 var passport = require('passport');
 var userModel = require('./users.model');
+var multer = require('multer');
 
 exports.signup = function (req, res) {
     console.log(res);
@@ -79,16 +80,6 @@ exports.verifyaccount = function (req, res) {
             res.redirect('/signup');
         }
     });
-    //passport.authenticate('local-confirmaccount', { query: ['email', 'token'] })(req, res, next);
-    /*passport.authenticate('local-confirmaccount', function (err, user, info) {
-        console.log("err")
-        console.log(err)
-        console.log("user")
-        console.log(user)
-        console.log("info")
-        console.log(info)
-    }
-    )(req, res);*/
 };
 
 exports.updateprofile = function (req, res) {
@@ -113,12 +104,12 @@ exports.updateprofile = function (req, res) {
             return res.send("error");
         }
         if (rows && rows.changedRows > 0) {
-            userModel.getnewinfo(edituserinfo, function (error, rows){
+            userModel.getnewinfo(edituserinfo, function (error, rows) {
                 console.log("resultado .....................")
                 console.log(rows)
                 console.log("cogiendo nuevos datos")
                 console.log(rows[0])
-                if(error){
+                if (error) {
                     return done(error);
                 }
                 return res.send(rows);
@@ -127,15 +118,29 @@ exports.updateprofile = function (req, res) {
     });
 };
 
+var save = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './src/client/images/avatar');
+    },
+    filename: function (req, file, cb) {
+        cb(null, req.cookies.usernameavatar + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
+    }
+});
+var upload = multer({
+    storage: save
+}).single('file');
 exports.uploadavatar = function (req, res) {
-    console.log("avatar---------------------")
     //var dz = req.dzMethods.getDropzone();
-    console.log(req.body);
+    upload(req, res, function (err) {
+        if (err) {
+            res.json({error_code:1,err_desc:err});
+            return;
+        }
+        res.json({error_code:0,err_desc:null,'path':req.file.destination+'/', 'filename':req.file.filename});
+    });
 }
 
 exports.getEventsProfile = function (req, res) {
-    console.log("llego hasta aqui")
-    console.log(req.body.username)
     userModel.getEventsProfile(req.body.username, function (error, data) {
         if (error) {
             res.send(error);

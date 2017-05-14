@@ -5,9 +5,9 @@
     .module('app.users')
     .controller('ProfileController', ProfileController);
 
-  ProfileController.$inject = ['logger', 'dataservice', '$state', '$timeout', '$rootScope', '$scope', '$translatePartialLoader'];
+  ProfileController.$inject = ['logger', 'dataservice', '$state', '$timeout', '$rootScope', '$scope', '$translatePartialLoader','Upload'];
   /* @ngInject */
-  function ProfileController(logger, dataservice, $state, $timeout, $rootScope, $scope, $translatePartialLoader) {
+  function ProfileController(logger, dataservice, $state, $timeout, $rootScope, $scope, $translatePartialLoader, Upload) {
     var datauser = $rootScope.authUser;
     var vm = this;
     if ($rootScope.authUser) {
@@ -33,11 +33,7 @@
         'username': datauser.username
       };
       var UserJSON = JSON.stringify(username);
-      console.log("UserJSON")
-      console.log(UserJSON)
-      console.log('Estic al getEvents del controller');
       return dataservice.getEventsProfile(UserJSON).then(function (data) {
-        console.log(data);
         vm.events = data;
         return vm.events;
       });
@@ -66,20 +62,20 @@
       });
     }
 
-    $scope.dzOptions = {
-      url: '/api/uploadavatar',
-      acceptedFiles: 'image/jpeg, images/jpg, image/png',
-      addRemoveLinks: true,
-      dictDefaultMessage: 'Click to add or drop avatar',
-      dictRemoveFile: 'Remove photo',
-      dictResponseError: 'Could not upload this photo',
-      paramName: 'photo',
-      renameFilename: $rootScope.authUser.username + '-avatar',
-      maxFilesize: '10',
-      maxFiles: '1'
+    $scope.upload = function (file) {
+        document.cookie = "usernameavatar="+datauser.username;
+        Upload.upload({
+            url: '/api/uploadavatar',
+            data: {file: file, 'username': datauser.username}
+            
+        }).then(function (resp) {
+            logger.success('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+        }, function (resp) {
+            logger.error('Error status: ' + resp.status);
+        }, function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            logger.success('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+        });
     };
-    vm.dzCallbacks = {};
-    vm.dzMethods = {};
-
   }
 })();

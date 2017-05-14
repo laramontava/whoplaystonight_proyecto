@@ -4,7 +4,8 @@
   angular.module('app.users', [
     'app.core',
     'app.widgets',
-    'thatisuday.dropzone'
+    'thatisuday.dropzone',
+    'ngFileUpload'
   ]);
 
 })();

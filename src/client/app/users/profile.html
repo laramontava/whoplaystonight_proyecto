@@ -1,7 +1,13 @@
 <section class="profile">
 
   <img ng-src="{{vm.avatar}}"></img>
-  <ng-dropzone class="dropzone" options="dzOptions" callbacks="dzCallbacks" methods="dzMethods"></ng-dropzone>
+
+<div class="button" ngf-select="upload($file)">Click to upload avatar</div>
+<div ngf-drop="upload($files)" class="drop-box dropzone"
+  ngf-drag-over-class="'dragover'" ngf-multiple="true" 
+  ngf-pattern="'image/*'">Drop Avatar here</div>
+<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+
   <form id="update_form" name="update_form">
     <div class='form-group'>
       <label for="name">Name:</label>
