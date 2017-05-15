@@ -116,7 +116,7 @@ var save = multer.diskStorage({
         cb(null, './src/client/images/avatar');
     },
     filename: function (req, file, cb) {
-        cb(null, req.cookies.usernameavatar + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
+        cb(null, req.cookies.usernameavatar + Date.now() + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
     }
 });
 var upload = multer({

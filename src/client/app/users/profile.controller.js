@@ -13,7 +13,7 @@
     if ($rootScope.authUser) {
       vm.name = $rootScope.authUser.name;
       vm.email = $rootScope.authUser.email;
-      vm.avatar = $rootScope.authUser.avatar;
+      vm.avatar = datauser.avatar;
       vm.events = getEvents();
     } else {
       $state.go('signin');

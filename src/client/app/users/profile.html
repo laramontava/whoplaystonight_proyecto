@@ -3,7 +3,7 @@
   <img ng-src="{{vm.avatar}}"></img>
 
 <div class="button" ngf-select="upload($file)">Click to upload avatar</div>
-<div ngf-drop="upload($files)" class="drop-box dropzone"
+<div ngf-drop="upload($file)" ngf-select="upload($file)" class="drop-box dropzone"
   ngf-drag-over-class="'dragover'" ngf-multiple="true" 
   ngf-pattern="'image/*'">Drop Avatar here</div>
 <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
