@@ -97,18 +97,11 @@ exports.updateprofile = function (req, res) {
     }
     )(req, res);*/
     userModel.editUserDB(edituserinfo, function (error, rows) {
-        console.log("redultado de editar")
-        console.log(rows.changedRows)
-        console.log(error)
         if (error || rows.changedRows === 0) {
             return res.send("error");
         }
         if (rows && rows.changedRows > 0) {
             userModel.getnewinfo(edituserinfo, function (error, rows) {
-                console.log("resultado .....................")
-                console.log(rows)
-                console.log("cogiendo nuevos datos")
-                console.log(rows[0])
                 if (error) {
                     return done(error);
                 }
@@ -135,8 +128,18 @@ exports.uploadavatar = function (req, res) {
         if (err) {
             res.json({error_code:1,err_desc:err});
             return;
+        } else {
+            var edituserinfo = {
+                username: req.cookies.usernameavatar,
+                avatar: 'images/avatar/'+req.file.filename
+            };
+            userModel.changeavatar(edituserinfo, function (error, rows) {
+                if (error) {
+                    return res.send("error");
+                }
+                res.json({error_code:0,err_desc:null,'path':req.file.destination+'/', 'filename':req.file.filename});
+            });
         }
-        res.json({error_code:0,err_desc:null,'path':req.file.destination+'/', 'filename':req.file.filename});
     });
 }
 
