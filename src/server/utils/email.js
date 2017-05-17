@@ -33,6 +33,16 @@ exports.sendEmail = function (req, res) {
                 '<p>Si no fuiste el que creó esta cuenta ignora el mensaje.</p></div>' +
                 ' </body>';
             break;
+        case 'password':
+            var emailTo = req.body.email;
+            var emailFrom = req.body.from;
+            var body = '<body>' +
+                '<div id="signup-email">' +
+                '<div> <h1>Confirma tu cuenta</h1>' +
+                '<section><h4>Haz click sobre el siguiente enlace:</h4>' +
+                '<p><a role="button" target="_self" style="background: black; padding: 15px; color: white; text-decoration: none; font-size: 18px;" href="http://localhost:8001/api/changepassword?token='+ req.body.token +'&email='+ req.body.email +'">Cambiar contraseña</a></p></section><br>' +
+                ' </body>';
+            break;
     }
     var template =
         '<html>' +

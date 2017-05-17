@@ -106,9 +106,9 @@
                     }, 1000);
                 } else if (response.data === 'errorcredentials') {
                     logger.error('User or password wrong');
-                } else if(response.data === 'notactivated') {
+                } else if (response.data === 'notactivated') {
                     logger.error('Your account is not activated');
-                }else {
+                } else {
                     logger.error('Server error, try again');
                 }
             });
@@ -128,6 +128,7 @@
         function sendtokentoemail() {
             var data = {
                 email: vm.email,
+                from: 'laramontava@gmail.com',
                 token: vm.text,
                 type: 'password',
                 messageDirection: 'to_user',
@@ -136,7 +137,21 @@
             var dataUserJSON = JSON.stringify(data);
             console.log(dataUserJSON);
             dataservice.RecoverPassword(dataUserJSON).then(function (response) {
-                console.log(response);
+                if (response) {
+                    dataservice.sendemail(data).then(function (response) {
+                        console.log("sendemail");
+                        if (response) {
+                            logger.success("Te enviamos un enlace para que cambies la contraseña");
+                            vm.email = '';
+                            vm.username = '';
+                            $timeout(function () {
+                                $state.go('main');
+                            }, 1000);
+                        } else {
+                            logger.error("Error sending the email, try later");
+                        }
+                    });
+                }
             });
         }
     }
