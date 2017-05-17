@@ -52,6 +52,16 @@
             loggedin: dataservice.checkLoggedin
           }*/
         }
+      },
+      {
+        state: 'email',
+        config: {
+          url: '/introduceemail',
+          templateUrl: 'app/users/introduceemail.html',
+          controller: 'SignUpController',
+          controllerAs: 'vm',
+          title: 'Introduce Email'
+        }
       }
     ];
   }

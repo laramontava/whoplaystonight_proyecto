@@ -1,0 +1,10 @@
+<section class="introduceemail">
+    <form name='introduceemail'>
+        <label for="email">Introduce your email:</label><br />
+        <input type="email" class='form-control' placeholder='example@email.com' name='email' ng-model='vm.email' ng-pattern="/^.+@.+\..+$/"
+            required ng-class='{ error: introduceemail.email.$invalid && !introduceemail.$pristine, warning: introduceemail.email.$error.email }'><br />
+            <span ng-show='!introduceemail.$pristine && introduceemail.email.$error.required'>Email is required</span>
+            <span ng-show='!introduceemail.$pristine && introduceemail.email.$error.pattern'>Please enter a valid email</span><br />
+        <button type="submit" class="btn btn-primary" ng-disabled='!introduceemail.$valid' ng-click="vm.sendtokentoemail()">Send message</button>
+    </form>
+</section>

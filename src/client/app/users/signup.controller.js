@@ -20,6 +20,7 @@
         vm.submitSignUpForm = submitSignUpForm;
         vm.submitSignInForm = submitSignInForm;
         vm.submitEditProfile = submitEditProfile;
+        vm.sendtokentoemail = sendtokentoemail;
         activate();
         function maketoken() {
             var text = "";
@@ -124,5 +125,16 @@
             console.log(dataUserJSON);
         }
 
+        function sendtokentoemail() {
+            var data = {
+                email: vm.email,
+                token: vm.text,
+                type: 'password',
+                messageDirection: 'to_user',
+                subject: '¿Has olvidado la contraseña?'
+            };
+            var dataUserJSON = JSON.stringify(data);
+            console.log(dataUserJSON);
+        }
     }
 })();
