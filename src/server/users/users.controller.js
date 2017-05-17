@@ -151,3 +151,13 @@ exports.getEventsProfile = function (req, res) {
         res.json(200, data);
     });
 };
+
+exports.recoverpassword = function (req, res) {
+    console.log(req.body);
+    userModel.recoverpassword(req.body, function (err, data){
+        if(err) {
+            res.send(error);
+        }
+        res.send(200, data);
+    });
+}

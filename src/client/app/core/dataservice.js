@@ -21,6 +21,7 @@
             UpdateProfile: UpdateProfile,
             CreateEvent: CreateEvent,
             getEventsProfile: getEventsProfile,
+            RecoverPassword: RecoverPassword
         };
 
         return service;
@@ -197,6 +198,20 @@
         function CreateEvent(data) {
             console.log(data);
             return $http.post('/api/createevent', data)
+                .then(success)
+                .catch(fail);
+
+            function success() {
+                return true;
+            }
+
+            function fail() {
+                return false;
+            }
+        }
+
+        function RecoverPassword(data) {
+            return $http.post('/api/recoverpassword', data)
                 .then(success)
                 .catch(fail);
 

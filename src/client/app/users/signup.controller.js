@@ -135,6 +135,9 @@
             };
             var dataUserJSON = JSON.stringify(data);
             console.log(dataUserJSON);
+            dataservice.RecoverPassword(dataUserJSON).then(function (response) {
+                console.log(response);
+            });
         }
     }
 })();

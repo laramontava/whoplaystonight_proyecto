@@ -127,4 +127,16 @@ usersModel.changeavatar = function (data, callback) {
     }
 }
 
+usersModel.recoverpassword = function (data, callback) {
+    if (connection) {
+        connection.query('UPDATE users SET token="' + data.token + '" WHERE email="' + data.email + '"',
+            function (error, row) {
+                if (error) {
+                    throw error;
+                } else {
+                    callback(null, row);
+                }
+            });
+    }
+}
 module.exports = usersModel;
