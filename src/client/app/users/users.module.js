@@ -5,7 +5,8 @@
     'app.core',
     'app.widgets',
     'thatisuday.dropzone',
-    'ngFileUpload'
+    'ngFileUpload',
+    'slickCarousel'
   ]);
 
 })();

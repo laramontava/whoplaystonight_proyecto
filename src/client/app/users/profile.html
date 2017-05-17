@@ -2,27 +2,26 @@
 
   <img ng-src="{{vm.avatar}}"></img>
 
-<div class="button" ngf-select="upload($file)">Click to upload avatar</div>
-<div ngf-drop="upload($file)" ngf-select="upload($file)" class="drop-box dropzone"
-  ngf-drag-over-class="'dragover'" ngf-multiple="true" 
-  ngf-pattern="'image/*'">Drop Avatar here</div>
-<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+  <div class="button" ngf-select="upload($file)">Click to upload avatar</div>
+  <div ngf-drop="upload($file)" ngf-select="upload($file)" class="drop-box dropzone" ngf-drag-over-class="'dragover'" ngf-multiple="true"
+    ngf-pattern="'image/*'">Drop Avatar here</div>
+    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
 
-  <form id="update_form" name="update_form">
-    <div class='form-group'>
-      <label for="name">Name:</label>
-      <input type="text" ng-model="vm.name" class='form-control' name='name' required ng-class='{ error: update_form.username.$invalid && !update_form.$pristine, warning: update_form.username.$error.name }'>
-      <span ng-show='!update_form.$pristine && update_form.name.$error.required'>Name is required</span>
-    </div>
+    <form id="update_form" name="update_form">
+      <div class='form-group'>
+        <label for="name">Name:</label>
+        <input type="text" ng-model="vm.name" class='form-control' name='name' required ng-class='{ error: update_form.username.$invalid && !update_form.$pristine, warning: update_form.username.$error.name }'>
+        <span ng-show='!update_form.$pristine && update_form.name.$error.required'>Name is required</span>
+      </div>
 
-    <div class='form-group'>
-      <label for="email">Email</label>
-      <input type="email" ng-model='vm.email' class='form-control' value="{{$root.authUser.email}}" name='email' required ng-class='{ error: update_form.email.$invalid && !update_form.$pristine }'>
-      <span ng-show='!update_form.$pristine && update_form.email.$error.required'>Email is required</span>
-    </div>
-    <br />
-    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="update_form.$invalid" ng-click="vm.submitEditProfile()">Update</button>
-  </form>
+      <div class='form-group'>
+        <label for="email">Email</label>
+        <input type="email" ng-model='vm.email' class='form-control' value="{{$root.authUser.email}}" name='email' required ng-class='{ error: update_form.email.$invalid && !update_form.$pristine }'>
+        <span ng-show='!update_form.$pristine && update_form.email.$error.required'>Email is required</span>
+      </div>
+      <br />
+      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="update_form.$invalid" ng-click="vm.submitEditProfile()">Update</button>
+    </form>
 </section>
 <hr/>
 <section class="events">
@@ -37,7 +36,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="evs in vm.events.data">
+      <tr ng-repeat="evs in vm.events.data | limitTo:vm.limit">
         <td>{{evs.town}}</td>
         <td>{{evs.band_name}}</td>
         <td>{{evs.date_event}}</td>
@@ -45,4 +44,87 @@
       </tr>
     </tbody>
   </table>
+  <button class="more btn btn-primary btn-block" ng-click="loadMore()">Load More!</button>
 </section>
+<section class="blue">
+  <div class="container">
+    <h2 class="content-title">Single Item</h2>
+
+    <script type="text/ng-template" id="tpl.html">
+      <h3>{{ evs.band_name }}</h3>
+    </script>
+
+    <script type="text/ng-template" id="tpl2.html">
+      <h3>{{ evs.band_name }}</h3>
+    </script>
+
+    <slick class="slider" settings="slickConfig" ng-if="slickConfig1Loaded" dots="true">
+      <div ng-repeat="evs in vm.events.data">
+        <div class="" ng-include="'tpl2.html'"></div>
+      </div>
+    </slick>
+  </div>
+</section>
+<style>
+  .header {
+    padding: 20px 0px;
+  }
+  
+  .header .title {
+    color: #3498db;
+    font-size: 48px;
+    line-height: 100px;
+    font-family: 'Pacifico';
+  }
+  
+  .header .sub-title {
+    color: #555;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    margin: 10px auto;
+    text-align: center;
+  }
+  
+  .blue {
+    background: #3498db;
+    color: #fff;
+  }
+  
+  .blue h3 {
+    background: #fff;
+    color: #3498db;
+    font-size: 36px;
+    line-height: 100px;
+    margin: 10px;
+    padding: 2%;
+    position: relative;
+    text-align: center;
+  }
+  
+  .content .content-title {
+    text-align: center;
+    line-height: 100px;
+    font-family: 'Pacifico';
+  }
+  
+  .footer {
+    padding: 20px 0px;
+  }
+  
+  .footer .title {
+    color: #3498db;
+    font-size: 48px;
+    line-height: 100px;
+    font-family: 'Pacifico';
+  }
+  
+  .footer .sub-title {
+    color: #555;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    margin: 10px auto;
+    text-align: center;
+  }
+</style>
