@@ -34,4 +34,6 @@ module.exports = function (app) {
     app.post('/api/eventsprofile', userscontroller.getEventsProfile);
 
     app.post('/api/recoverpassword', userscontroller.recoverpassword);
+
+    app.get('/api/changepassword', userscontroller.changepassword);
 };

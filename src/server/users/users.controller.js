@@ -52,11 +52,9 @@ exports.loggedin = function (req, res) {
 };
 
 exports.verifyaccount = function (req, res) {
-    console.log("estoy a punto de verificar mi cuenta :D");
     console.log(req.query.token);
     console.log(req.query.email);
     userModel.verifyAccount(req, function (error, rows, callback) {
-        console.log('llega a pasar model------------------------');
         console.log(req.query.email)
         console.log(req.query.token)
         console.log(error)
@@ -83,19 +81,13 @@ exports.verifyaccount = function (req, res) {
 };
 
 exports.updateprofile = function (req, res) {
-    console.log("actualizar cuenta...............................")
-    //console.log(res);
     var edituserinfo = {
         username: req.body.username,
         email: req.body.email,
         name: req.body.name,
         avatar: req.body.avatar
     };
-    console.log(edituserinfo)
-    /*passport.authenticate('updateprofile', function (err, user, info) {
-        console.log(user)
-    }
-    )(req, res);*/
+    
     userModel.editUserDB(edituserinfo, function (error, rows) {
         if (error || rows.changedRows === 0) {
             return res.send("error");
@@ -159,5 +151,17 @@ exports.recoverpassword = function (req, res) {
             res.send(error);
         }
         res.send(200, data);
+    });
+}
+
+exports.changepassword = function (req, res) {
+    console.log(req.query);
+    userModel.changepassword(req.query, function (err, data){
+        console.log(data[0].total);
+        if(data[0].total > 0) {
+            res.redirect('/');
+        } else {
+            res.redirect('/signup');
+        }
     });
 }

@@ -139,4 +139,20 @@ usersModel.recoverpassword = function (data, callback) {
             });
     }
 }
+
+usersModel.changepassword = function (info, callback) {
+    if (connection) {
+        console.log("info:")
+        console.log(info.email);
+        console.log(info.token);
+        connection.query('SELECT COUNT(*) as total FROM users WHERE email="' + info.email + '" AND token="' + info.token + '"',
+            function (error, row) {
+                if (error) {
+                    throw error;
+                } else {
+                    callback(null, row);
+                }
+            });
+    }
+}
 module.exports = usersModel;
