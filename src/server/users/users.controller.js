@@ -87,7 +87,7 @@ exports.updateprofile = function (req, res) {
         name: req.body.name,
         avatar: req.body.avatar
     };
-    
+
     userModel.editUserDB(edituserinfo, function (error, rows) {
         if (error || rows.changedRows === 0) {
             return res.send("error");
@@ -118,18 +118,18 @@ exports.uploadavatar = function (req, res) {
     //var dz = req.dzMethods.getDropzone();
     upload(req, res, function (err) {
         if (err) {
-            res.json({error_code:1,err_desc:err});
+            res.json({ error_code: 1, err_desc: err });
             return;
         } else {
             var edituserinfo = {
                 username: req.cookies.usernameavatar,
-                avatar: 'images/avatar/'+req.file.filename
+                avatar: 'images/avatar/' + req.file.filename
             };
             userModel.changeavatar(edituserinfo, function (error, rows) {
                 if (error) {
                     return res.send("error");
                 }
-                res.json({error_code:0,err_desc:null,'path':req.file.destination+'/', 'filename':req.file.filename});
+                res.json({ error_code: 0, err_desc: null, 'path': req.file.destination + '/', 'filename': req.file.filename });
             });
         }
     });
@@ -146,8 +146,8 @@ exports.getEventsProfile = function (req, res) {
 
 exports.recoverpassword = function (req, res) {
     console.log(req.body);
-    userModel.recoverpassword(req.body, function (err, data){
-        if(err) {
+    userModel.recoverpassword(req.body, function (err, data) {
+        if (err) {
             res.send(error);
         }
         res.send(200, data);
@@ -156,10 +156,11 @@ exports.recoverpassword = function (req, res) {
 
 exports.changepassword = function (req, res) {
     console.log(req.query);
-    userModel.changepassword(req.query, function (err, data){
+    userModel.changepassword(req.query, function (err, data) {
         console.log(data[0].total);
-        if(data[0].total > 0) {
-            res.redirect('/');
+        if (data[0].total > 0) {
+            //res.cookie('emailchangepass',req.query.email, { maxAge: 900000, httpOnly: true });
+            res.redirect('/changepassword?email='+req.query.email+"&token="+req.query.token);
         } else {
             res.redirect('/signup');
         }

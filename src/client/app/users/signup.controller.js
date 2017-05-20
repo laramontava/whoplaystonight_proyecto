@@ -5,9 +5,9 @@
         .module('app.users')
         .controller('SignUpController', SignUpController);
 
-    SignUpController.$inject = ['logger', 'dataservice', '$state', '$timeout', '$rootScope', '$scope'];
+    SignUpController.$inject = ['logger', 'dataservice', '$state', '$timeout', '$rootScope', '$scope', '$location'];
     /* @ngInject */
-    function SignUpController(logger, dataservice, $state, $timeout, $rootScope, $scope) {
+    function SignUpController(logger, dataservice, $state, $timeout, $rootScope, $scope, $location) {
         var vm = this;
         var datauser = $rootScope.authUser;
         vm.title = 'SignUp';
@@ -21,6 +21,8 @@
         vm.submitSignInForm = submitSignInForm;
         vm.submitEditProfile = submitEditProfile;
         vm.sendtokentoemail = sendtokentoemail;
+        vm.changepassword = changepassword;
+
         activate();
         function maketoken() {
             var text = "";
@@ -153,6 +155,15 @@
                     });
                 }
             });
+        }
+        
+        function changepassword() {
+            var data = {
+                newpass: vm.password,
+                email: $location.search().email,
+                token: $location.search().token
+            }
+            console.log(data);
         }
     }
 })();

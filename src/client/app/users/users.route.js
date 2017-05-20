@@ -62,6 +62,16 @@
           controllerAs: 'vm',
           title: 'Introduce Email'
         }
+      },
+      {
+        state: 'changepassword',
+        config: {
+          url: '/changepassword:email',
+          templateUrl: 'app/users/changepassword.html',
+          controller: 'SignUpController',
+          controllerAs: 'vm',
+          title: 'Change Password'
+        }
       }
     ];
   }
