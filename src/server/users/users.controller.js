@@ -1,6 +1,7 @@
 var passport = require('passport');
 var userModel = require('./users.model');
 var multer = require('multer');
+var bcrypt = require('bcrypt-nodejs');
 
 exports.signup = function (req, res) {
     console.log(res);
@@ -15,6 +16,20 @@ exports.signup = function (req, res) {
     }
     )(req, res);
 };
+
+exports.changepasswordbd = function (req, res) {
+    var edituserinfo = {
+        email: req.body.email,
+        token: req.body.token,
+        password: bcrypt.hashSync(req.body.newpass, null, null)
+    };
+    userModel.changepasswordbd(edituserinfo, function (err, data) {
+        if (err) {
+            res.send(error);
+        }
+        res.json(200, data);
+    });
+}
 
 exports.signin = function (req, res, next) {
     console.log(res);
@@ -159,10 +174,10 @@ exports.changepassword = function (req, res) {
     userModel.changepassword(req.query, function (err, data) {
         console.log(data[0].total);
         if (data[0].total > 0) {
-            //res.cookie('emailchangepass',req.query.email, { maxAge: 900000, httpOnly: true });
             res.redirect('/changepassword?email='+req.query.email+"&token="+req.query.token);
         } else {
             res.redirect('/signup');
         }
     });
 }
+

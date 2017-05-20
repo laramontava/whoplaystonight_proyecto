@@ -163,7 +163,16 @@
                 email: $location.search().email,
                 token: $location.search().token
             }
-            console.log(data);
+            var dataUserJSON = JSON.stringify(data);
+            dataservice.ChangePasswordBD(dataUserJSON).then(function (response) {
+                if (response) {
+                    logger.success("Contraseña cambiada correctamente");
+                    $state.go('main');
+                } else {
+                    logger.error("Error al cambiar la contraseña");
+                    $state.go('main');
+                }
+            });
         }
     }
 })();

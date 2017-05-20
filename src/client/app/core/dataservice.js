@@ -21,7 +21,8 @@
             UpdateProfile: UpdateProfile,
             CreateEvent: CreateEvent,
             getEventsProfile: getEventsProfile,
-            RecoverPassword: RecoverPassword
+            RecoverPassword: RecoverPassword,
+            ChangePasswordBD: ChangePasswordBD
         };
 
         return service;
@@ -215,6 +216,19 @@
                 .then(success)
                 .catch(fail);
 
+            function success() {
+                return true;
+            }
+
+            function fail() {
+                return false;
+            }
+        }
+
+        function ChangePasswordBD(data) {
+            return $http.post('/api/changepasswordbd', data)
+                .then(success)
+                .catch(fail);
             function success() {
                 return true;
             }

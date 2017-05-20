@@ -155,4 +155,18 @@ usersModel.changepassword = function (info, callback) {
             });
     }
 }
+
+usersModel.changepasswordbd = function (data, callback) {
+    if (connection) {
+        connection.query('UPDATE users SET password="' + data.password + '" WHERE email="' + data.email + '" AND token="' + data.token + '"',
+            function (error, row) {
+                if (error) {
+                    throw error;
+                } else {
+                    callback(null, row);
+                }
+            });
+    }
+}
+
 module.exports = usersModel;
