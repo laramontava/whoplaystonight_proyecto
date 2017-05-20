@@ -23,8 +23,8 @@ exports.sendEmail = function (req, res) {
                 ' </body>';
             break;
         case 'signup':
-            var emailTo = req.body.from;
-            var emailFrom = req.body.to;
+            var emailTo = req.body.to;
+            var emailFrom = req.body.from;
             var body = '<body>' +
                 '<div id="signup-email">' +
                 '<div> <h1>Confirma tu cuenta</h1>' +

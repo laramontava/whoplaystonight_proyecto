@@ -64,8 +64,8 @@
         function sendSignUp() {
             var data = {
                 name: vm.username,
-                from: vm.email,
-                to: 'laramontava@gmail.com',
+                to: vm.email,
+                from: 'laramontava@gmail.com',
                 subject: 'Confirmar registro',
                 text: vm.text,
                 messageDirection: 'to_user',

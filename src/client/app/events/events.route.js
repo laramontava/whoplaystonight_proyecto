@@ -22,8 +22,7 @@
           controllerAs: 'vm',
           title: 'Create Event',
           settings: {
-            nav: 3,
-            content: 'Create Event'
+            
           }
         }
       }
