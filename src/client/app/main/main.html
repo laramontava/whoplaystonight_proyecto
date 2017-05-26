@@ -10,8 +10,12 @@
 <section role="search" class="search">
   <div>
     <h4 class="aCenter">{{'MAIN_SEARCH' | translate}}</h4>
-    <input id="input-search" type="text" class="form-control" placeholder="Search for...">
-    <button class="btn_main" type="button">Go!</button>
+      <a href="events?info=allevents">Ver todos los eventos</a>
+      <input id="input-search" type="text" class="form-control" placeholder="Search for...">
+      <select id="selecttype">
+        <option value="concert">Concert</option>
+      </select>
+    <button class="btn_main" type="button" ng-click="vm.searchevents()">Go!</button>
   </div>
 </section>
 <section role="contentinfo" class="info_main">

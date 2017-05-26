@@ -30,3 +30,12 @@ exports.createevent = function (req, res) {
     });
     
 };
+
+exports.geteventssearch = function (req, res) {
+    eventsModel.geteventssearch(req.body.search, function (error, data) {
+        if (error) {
+            res.send(error);
+        }
+        res.json(200, data);
+    });
+};

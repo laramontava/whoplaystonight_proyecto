@@ -25,6 +25,16 @@
             
           }
         }
+      },
+      {
+        state: 'listevents',
+        config: {
+          url: '/events:info',
+          templateUrl: 'app/events/listevents.html',
+          controller: 'EventsListController',
+          controllerAs: 'vm',
+          title: 'Events'
+        }
       }
     ];
   }

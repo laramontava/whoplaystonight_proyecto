@@ -5,17 +5,22 @@
     .module('app.main')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['logger', '$translatePartialLoader'];
+  MainController.$inject = ['logger', '$translatePartialLoader', '$location'];
   /* @ngInject */
-  function MainController(logger, $translatePartialLoader) {
+  function MainController(logger, $translatePartialLoader, $location) {
     var vm = this;
+    vm.searchevents = searchevents;
     $translatePartialLoader.addPart('main');
     vm.title = 'Main';
      
     activate();
 
     function activate() {
-      logger.info('Activated Main View');
+      
+    }
+    function searchevents() {
+      //$location.path('events"?"info='+$( "#selecttype" ).val());
+      $location.url("/events").search("info="+$( "#selecttype" ).val());
     }
   }
 })();

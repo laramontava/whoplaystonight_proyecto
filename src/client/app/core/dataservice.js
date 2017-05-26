@@ -22,7 +22,8 @@
             CreateEvent: CreateEvent,
             getEventsProfile: getEventsProfile,
             RecoverPassword: RecoverPassword,
-            ChangePasswordBD: ChangePasswordBD
+            ChangePasswordBD: ChangePasswordBD,
+            getSearchEvents: getSearchEvents
         };
 
         return service;
@@ -81,6 +82,22 @@
             console.log("en data")
             console.log(data)
             return $http.post('/api/eventsprofile', data)
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                return response;
+            }
+
+            function fail(e) {
+                return exception.catcher('XHR Failed for getEvents')(e);
+            }
+        }
+
+        function getSearchEvents(data) {
+            console.log("en data")
+            console.log(data)
+            return $http.post('/api/eventssearch', data)
                 .then(success)
                 .catch(fail);
 
